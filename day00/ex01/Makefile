@@ -1,21 +1,23 @@
 
-NAME := megaphone
+NAME := phonebook
 
 SRC_DIR := ./src/
 INC_DIR := ./inc/
 OBJ_DIR := ./obj/
+INC_DIR := ./inc/
+
 SRC := $(wildcard src/*.cpp)
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:src/%.cpp=%.o))
 FLAGS := -Wall -Wextra -Werror
 
-all: $(NAME)
+all: $(NAME) $(INC_DIR)*
 
 $(NAME) : $(OBJ)
 	clang++ $(FLAGS) $(OBJ) -o $(NAME)
 
 $(OBJ_DIR)%.o:%.cpp
 	mkdir -p obj
-	clang++ $(FLAGS) -c $< -o $@
+	clang++ $(FLAGS) -I inc/ -c $< -o $@
 clean:
 	rm -rf $(OBJ_DIR)
 fclean: clean
