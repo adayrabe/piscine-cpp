@@ -1,5 +1,5 @@
 
-NAME := phonebook
+NAME := accounts
 
 SRC_DIR := ./src/
 INC_DIR := ./inc/
