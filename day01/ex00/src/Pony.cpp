@@ -34,7 +34,7 @@ std::string Pony::getColor(void) const
 	return (this->_color);
 }
 
-void Pony::talk(void)
+void Pony::talk(void) const
 {
 	std::cout << "My name is " << this->_name << std::endl;
 	std::cout << "I am " << this->_age << " years old" << std::endl;

@@ -1,4 +1,5 @@
 #include "ZombieEvent.hpp"
+#include <fstream>
 
 ZombieEvent::ZombieEvent(void)
 {
@@ -17,15 +18,22 @@ void ZombieEvent::setZombieType(std::string type)
 	this->_type = type;
 }
 
-Zombie* ZombieEvent::newZombie(std::string name)
+Zombie* ZombieEvent::newZombie(std::string name) const
 {
 	Zombie *newZombie = new Zombie(this->_type, name);
 	return (newZombie);
 }
 
-void ZombieEvent::randomChump(void)
+void ZombieEvent::randomChump(void) const
 {
-	std::string name = "Hello";
+	unsigned char i;
+	std::ifstream ifs("/dev/random");
+
+	ifs >> i;
+	std::string names[] = {"Jennifer", "Rose", "James", "Huston", "Tirion", "John", "Sansa", "Jimmy",
+			"Jayme", "Harry", "Ron", "Dumbledore"};
+	i = i % sizeof(names) / sizeof(std::string);
+	std::string name = names[i];
 	Zombie newZombie = Zombie(this->_type, name);
 	newZombie.announce();
 }

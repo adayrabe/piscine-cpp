@@ -14,7 +14,7 @@ class Pony
 		std::string getName(void) const;
 		int getAge(void) const;
 		std::string getColor(void) const;
-		void talk(void);
+		void talk(void) const;
 
 	private:
 
