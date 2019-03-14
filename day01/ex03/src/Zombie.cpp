@@ -2,6 +2,14 @@
 
 Zombie::Zombie(void)
 {
+	unsigned char i;
+	std::ifstream ifs("/dev/random");
+
+	ifs >> i;
+	std::string names[] = {"Jennifer", "Rose", "James", "Huston", "Tirion", "John", "Sansa", "Jimmy",
+			"Jayme", "Harry", "Ron", "Dumbledore"};
+	i = i % sizeof(names) / sizeof(std::string);
+	this->_name = names[i];
 	std::cout << "A zombie has been created" << std::endl;
 	return ;
 }
