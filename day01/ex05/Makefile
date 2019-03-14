@@ -10,9 +10,9 @@ SRC := $(wildcard src/*.cpp)
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:src/%.cpp=%.o))
 FLAGS := -Wall -Wextra -Werror
 
-all: $(NAME) $(INC_DIR)*
+all: $(NAME)
 
-$(NAME) : $(OBJ)
+$(NAME) : $(OBJ) $(INC_DIR)*
 	clang++ $(FLAGS) $(OBJ) -o $(NAME)
 
 $(OBJ_DIR)%.o:%.cpp

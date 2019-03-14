@@ -10,7 +10,7 @@ FLAGS := -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME) : $(OBJ)
+$(NAME) : $(OBJ) $(INC_DIR)*
 	clang++ $(FLAGS) $(OBJ) -o $(NAME)
 
 $(OBJ_DIR)%.o:%.cpp
