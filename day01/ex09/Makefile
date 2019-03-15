@@ -1,5 +1,5 @@
 
-NAME := weapon
+NAME := log
 
 SRC_DIR := ./src/
 INC_DIR := ./inc/
