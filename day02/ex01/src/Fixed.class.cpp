@@ -15,6 +15,26 @@ Fixed::Fixed(Fixed const &other)
 	return ;
 }
 
+Fixed::Fixed(int const num)
+{
+	std::cout << "Int constructor called" << std::endl;
+	_fixedPoint = num << this->_fractionalBits;
+	return ;
+}
+
+Fixed::Fixed (float const num)
+{
+	std::cout << "Float constructor called" << std::endl;
+	_fixedPoint = roundf(num * (1 << this->_fractionalBits));
+	return ;
+}
+
+Fixed::~Fixed(void)
+{
+	std::cout << "Destructor called" << std::endl;
+	return ;
+}
+
 Fixed&  Fixed::operator=(Fixed const &other)
 {
 	std::cout << "Assination operator called" << std::endl;
@@ -35,8 +55,19 @@ void Fixed::setRawBits(int const raw)
 	return ;
 }
 
-Fixed::~Fixed(void)
+float Fixed::toFloat(void) const
 {
-	std::cout << "Destructor called" << std::endl;
-	return ;
+	return ((float)this->_fixedPoint /
+		(float)(1 <<  this->_fractionalBits));
+}
+
+int Fixed::toInt(void) const
+{
+	return this->_fixedPoint >> this->_fractionalBits;
+}
+
+std::ostream& operator<<(std::ostream &o, Fixed const &num)
+{
+	o << num.toFloat();
+	return o;
 }
