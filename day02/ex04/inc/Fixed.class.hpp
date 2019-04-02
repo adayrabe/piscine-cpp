@@ -43,5 +43,6 @@ Fixed& min(Fixed &first, Fixed &second);
 Fixed const & min(Fixed const &first, Fixed const &second);
 Fixed& max(Fixed &first, Fixed &second);
 Fixed const & max(Fixed const &first, Fixed const &second);
-void evalExpr(std::string str);
+Fixed eval_expr(std::string str);
+
 #endif

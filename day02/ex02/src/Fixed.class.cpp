@@ -50,7 +50,7 @@ void Fixed::setRawBits(int const raw)
 float Fixed::toFloat(void) const
 {
 	return ((float)this->_fixedPoint /
-		(float)(1 <<  this->_fractionalBits));
+		(float)(1 << this->_fractionalBits));
 }
 
 int Fixed::toInt(void) const
@@ -90,9 +90,6 @@ bool Fixed::operator!=(Fixed const &other) const
 
 Fixed Fixed::operator+(Fixed const &other) const
 {
-		std::cout << this->toFloat() << " " <<  other.toFloat() << std::endl;
-
-	std::cout << this->toFloat() + other.toFloat() << std::endl;
 	return Fixed(this->toFloat() + other.toFloat());
 }
 
@@ -115,12 +112,7 @@ Returning a default value" << std::endl;
 
 Fixed Fixed::operator*(Fixed const &other) const
 {
-	// std::cout << this->toFloat() << " " << other.toFloat() <<std::endl;
-	// std::cout << this->toFloat() * other.toFloat() << std::endl;
 	return Fixed(this->toFloat() * other.toFloat());
-	// Fixed res;
-	// res.setRawBits(this->_fixedPoint * other.getRawBits());
-	// return res;
 }
 
 Fixed& Fixed::operator++()
