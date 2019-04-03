@@ -19,7 +19,7 @@ void	addNumber(size_t &i, t_list **res, std::string str)
 		i++;
 		while (str[i] && isdigit(str[i]))
 		{
-			numFloat = numFloat + tempFloat * str[i] - '0';
+			numFloat = numFloat + tempFloat * (str[i] - '0');
 			tempFloat *= 0.1;
 			i++;
 		}
@@ -94,22 +94,10 @@ t_list *make_polish(std::string str)
 			exit(EXIT_FAILURE);
 		}
 	}
-    t_list *temp;
     while (operators)
     {
 	    push_tail(&res, NULL, operators->op);
 	    pop_head(&operators);
     }
-	temp = res;
-	while (temp)
-    {
-	    if (temp->num)
-	        std::cout << temp->num->toInt() << " ";
-        else
-            std::cout << temp->op << " ";
-	    temp = temp->next;
-    }
-	std::cout << std::endl;
-
 	return res;
 }

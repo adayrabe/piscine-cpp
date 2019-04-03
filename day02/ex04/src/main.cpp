@@ -8,6 +8,6 @@ int main(int ac, char **av)
 		return 1;
 	}
 	std::string temp(av[1]);
-	eval_expr(temp);
+	std:: cout << eval_expr(temp) << std::endl;
 	return 0;
 }

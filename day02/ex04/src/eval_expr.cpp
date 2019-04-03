@@ -52,18 +52,26 @@ void do_operation(t_list **stack, char op)
 Fixed evaluate(t_list *queue)
 {
 	t_list *stack;
+	Fixed res;
 
+	stack = NULL;
 	while (queue != NULL)
 	{
 		if ((queue)->num)
 			push_head(&stack, (queue)->num, ' ');
 		else
 			do_operation(&stack, (queue)->op);
-		pop_head(&queue);
-//		if (!queue->next)
-//			break;
+        pop_head(&queue);
 	}
-	std::cout << "H";
+	res = Fixed(*(stack->num));
+	delete stack->num;
+	pop_head(&stack);
+	if (stack)
+	{
+        std::cout << "Error - too much numbers (not enough operators)" << std::endl;
+        exit (EXIT_FAILURE);
+    }
+    return res;
 }
 
 
@@ -71,9 +79,7 @@ Fixed eval_expr(std::string str)
 {
 	t_list *queue;
 
-	str = removeSpaces(str);
-	std::cout << str << std :: endl;
+    str = removeSpaces(str);
 	queue = make_polish(str);
-	evaluate(queue);
-	return Fixed();
+	return evaluate(queue);
 }

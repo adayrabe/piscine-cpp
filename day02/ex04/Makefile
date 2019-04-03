@@ -1,5 +1,5 @@
 
-NAME := fixed
+NAME := eval_expr
 
 SRC_DIR := ./src/
 INC_DIR := ./inc/
