@@ -1,5 +1,5 @@
 
-NAME := fixed
+NAME := fragTrap
 
 SRC_DIR := ./src/
 INC_DIR := ./inc/
@@ -12,11 +12,13 @@ FLAGS := -Wall -Wextra -Werror
 
 all: $(NAME)
 
-$(NAME) : $(OBJ) $(INC_DIR)*
+$(NAME) : $(OBJ_DIR) $(OBJ)
 	clang++ $(FLAGS) $(OBJ) -o $(NAME)
 
-$(OBJ_DIR)%.o:%.cpp
-	mkdir -p obj
+$(OBJ_DIR):
+	mkdir -p $(OBJ_DIR)	
+
+$(OBJ_DIR)%.o:%.cpp $(INC_DIR)*
 	clang++ $(FLAGS) -I inc/ -c $< -o $@
 clean:
 	rm -rf $(OBJ_DIR)
