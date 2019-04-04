@@ -149,12 +149,12 @@ void FragTrap::takeDamage(unsigned int amount)
     if (amount >= this->_hitPoints + this->_armorDamageReduction)
     {
         std::cout << "OMG! I can't receive more damage! Need to get repaired, otherwise I will die!" << std::endl;
-        std::cout << "FR4G-TP " << this->_name << " has 0 HP" << std::endl;
+        std::cout << this->_name << " has 0 HP" << std::endl;
         this->_hitPoints = 0;
         return ;
     }
     this->_hitPoints = this->_hitPoints + this->_armorDamageReduction - amount;
-    std::cout << "FR4G-TP " << this->_name << " receives " << amount <<
+    std::cout << this->_name << " receives " << amount <<
     " of damage, current hitpoints are  " << this->_hitPoints << std::endl;
     std::cout << "No matter how much you try, you will never kill me!" << std::endl;
     return ;
@@ -164,20 +164,20 @@ void FragTrap::beRepaired(unsigned int amount)
 {
     if (this->_energyPoints < ENERGY)
     {
-        std::cout << "Fragtrap " << this->_name << " has not enough energy points! Adding energy points" << std::endl;
+        std::cout << this->_name << " has not enough energy points! Adding energy points" << std::endl;
         this->addEnergyPoints();
         return ;
     }
     if (this->_hitPoints + amount >= this->_maxHitPoints)
     {
-        std::cout << "FR4G-TP " << this->_name << " is now totally repaired." <<std::endl;
+        std::cout << this->_name << " is now totally repaired." <<std::endl;
         std::cout << "I will soon kill all the humans! He-he-he" << std::endl;
         this->_hitPoints = this->_maxHitPoints;
         return ;
     }
     this->_energyPoints -= ENERGY;
     this->_hitPoints += amount;
-    std::cout << "FR4G-TP " << this->_name << "is repairing his hit points by " << amount <<
+    std::cout << this->_name << " is repairing his hit points by " << amount <<
     "! His current hitpoints amount is " << this->_hitPoints << std::endl;
     std::cout << "I will live forever!" << std::endl;
     return ;
@@ -202,7 +202,7 @@ void FragTrap::vaulthunter_dot_exe(std::string const & target)
 
     if (this->_energyPoints < ATTACK)
     {
-        std::cout << "What a shame! FR4G-TP " << this->_name << "has not enough energy! Adding some energy" <<std::endl;
+        std::cout << "What a shame! FR4G-TP " << this->_name << " has not enough energy! Adding some energy" <<std::endl;
         this->addEnergyPoints();
         return ;
     }

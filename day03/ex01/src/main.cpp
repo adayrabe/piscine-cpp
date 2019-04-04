@@ -31,8 +31,11 @@ int main()
 	ScavTrap temp2 = temp;
 
 	std::cout << "===============================================" << std::endl;
-	std::cout << "Now testing vaulthunter function" << std::endl;
-
+	std::cout << "Now testing challenge newcomer function" << std::endl;
+	temp2.challengeNewcomer();
+	temp2.challengeNewcomer();
+	temp2.challengeNewcomer();
+	temp2.challengeNewcomer();
 
 	return (0);
 }

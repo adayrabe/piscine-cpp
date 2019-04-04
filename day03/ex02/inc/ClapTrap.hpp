@@ -1,17 +1,18 @@
-#ifndef SCAVTRAP_HPP
-#define SCAVTRAP_HPP
+#ifndef CLAPTRAP_HPP
+#define CLAPTRAP_HPP
 
 #include <iostream>
 #include <fstream>
+#define ATTACK 25
 #define ENERGY 10
 
-class ScavTrap
+class ClapTrap
 {
 	public:
-		ScavTrap(std::string const name);
-		ScavTrap(ScavTrap const &other);
-		ScavTrap& operator=(ScavTrap const &other);
-		~ScavTrap(void);
+		ClapTrap(std::string const name);
+		ClapTrap(ClapTrap const &other);
+		ClapTrap& operator=(ClapTrap const &other);
+		~ClapTrap(void);
 
 		unsigned int getHitPoints(void) const;
 		unsigned int getMaxHitPoints(void) const;
@@ -37,10 +38,8 @@ class ScavTrap
 		void takeDamage(unsigned int amount);
 		void beRepaired (unsigned int amount);
 		void addEnergyPoints(void);
-		void challengeNewcomer();
 
-private:
-		ScavTrap(void);
+protected:
 		unsigned int _hitPoints;
 		unsigned int _maxHitPoints;
 		unsigned int _energyPoints;
@@ -56,6 +55,9 @@ private:
 
 
 		unsigned int _armorDamageReduction;
+
+		ClapTrap(void);
+
 };
 
 #endif
