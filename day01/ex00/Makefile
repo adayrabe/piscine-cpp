@@ -6,7 +6,7 @@ INC_DIR := ./inc/
 OBJ_DIR := ./obj/
 INC_DIR := ./inc/
 
-SRC := $(wildcard src/*.cpp)
+SRC := src/main.cpp src/Pony.cpp
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:src/%.cpp=%.o))
 FLAGS := -Wall -Wextra -Werror
 

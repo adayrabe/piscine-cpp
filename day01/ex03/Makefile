@@ -6,7 +6,7 @@ INC_DIR := ./inc/
 OBJ_DIR := ./obj/
 INC_DIR := ./inc/
 
-SRC := $(wildcard src/*.cpp)
+SRC := src/main.cpp src/Zombie.cpp src/ZombieHorde.cpp
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:src/%.cpp=%.o))
 FLAGS := -Wall -Wextra -Werror
 
@@ -16,7 +16,7 @@ $(NAME) : $(OBJ) $(INC_DIR)*
 	clang++ $(FLAGS) $(OBJ) -o $(NAME)
 
 $(OBJ_DIR)%.o:%.cpp
-	mkdir -p obj
+	@mkdir -p obj
 	clang++ $(FLAGS) -I inc/ -c $< -o $@
 clean:
 	rm -rf $(OBJ_DIR)

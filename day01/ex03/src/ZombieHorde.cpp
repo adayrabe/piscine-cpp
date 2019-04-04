@@ -8,6 +8,11 @@ ZombieHorde::ZombieHorde(void)
 
 ZombieHorde::ZombieHorde(int n):_amount(n)
 {
+	if (n < 0)
+	{
+		std::cout << "Error - amount should be a non-negative integer" << std::endl;
+		return ;
+	}
 	this->_zombies = new Zombie[n];
 	std::cout << "A zombie horde has been created" << std::endl;
 	return ;

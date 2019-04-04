@@ -4,7 +4,7 @@ NAME := ptrRef
 SRC_DIR := ./src/
 INC_DIR := ./inc/
 OBJ_DIR := ./obj/
-SRC := $(wildcard src/*.cpp)
+SRC := src/main.cpp
 OBJ = $(addprefix $(OBJ_DIR), $(SRC:src/%.cpp=%.o))
 FLAGS := -Wall -Wextra -Werror
 

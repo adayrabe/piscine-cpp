@@ -6,9 +6,10 @@ Zombie::Zombie(void)
 	std::ifstream ifs("/dev/random");
 
 	ifs >> i;
+	ifs.close();
 	std::string names[] = {"Jennifer", "Rose", "James", "Huston", "Tirion", "John", "Sansa", "Jimmy",
 			"Jayme", "Harry", "Ron", "Dumbledore"};
-	i = i % sizeof(names) / sizeof(std::string);
+	i = i % (sizeof(names) / sizeof(std::string));
 	this->_name = names[i];
 	std::cout << "A zombie has been created" << std::endl;
 	return ;

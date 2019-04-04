@@ -30,9 +30,10 @@ void ZombieEvent::randomChump(void) const
 	std::ifstream ifs("/dev/random");
 
 	ifs >> i;
+	ifs.close();
 	std::string names[] = {"Jennifer", "Rose", "James", "Huston", "Tirion", "John", "Sansa", "Jimmy",
 			"Jayme", "Harry", "Ron", "Dumbledore"};
-	i = i % sizeof(names) / sizeof(std::string);
+	i = i % (sizeof(names) / sizeof(std::string));
 	std::string name = names[i];
 	Zombie newZombie = Zombie(this->_type, name);
 	newZombie.announce();

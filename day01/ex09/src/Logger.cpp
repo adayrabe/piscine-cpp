@@ -45,6 +45,7 @@ void Logger::logToFile(std::string const str)
 		return ;
 	}
 	ofs << str;
+	ofs.close();
 	return ;
 }
 

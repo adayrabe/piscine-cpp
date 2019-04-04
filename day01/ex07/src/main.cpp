@@ -16,7 +16,10 @@ void parce(std::string file, std::string s1, std::string s2)
 	std::ifstream ifs(file);
 	std::string str;
 	std::string temp;
-	std::ofstream ofs (file + ".replace");
+
+	temp = file;
+	for (size_t i = 0; i < temp.length(); i++)
+		temp[i] = toupper(temp[i]);
 
 	int pos;
 
@@ -24,13 +27,16 @@ void parce(std::string file, std::string s1, std::string s2)
 	{
 		std::cerr << "Error: " << file << ": "<< strerror(errno) << std::endl;
 		return ;
-	}
+	}	
+	std::ofstream ofs (temp + ".replace");
 	while (getline(ifs, temp))
 		str = str + temp + '\n';
+	ifs.close();
 	pos = 0;
 	while (pos != -1)
 		str = replace(str, s1, s2, pos);
 	ofs << str;
+	ofs.close();
 }
 
 int main(int ac, char **av)
