@@ -20,8 +20,13 @@ class FragTrap
 		unsigned int getMaxEnergyPoints(void) const;
 		unsigned int getLevel(void) const;
 		std::string getName(void) const;
+
 		unsigned int getMeleeAttackDamage(void) const;
 		unsigned int getRangedAttackDamage(void) const;
+		unsigned int getGrenadeDamage(void) const;
+		unsigned int getColdDamage(void) const;
+		unsigned int getFireDamage(void) const;
+		
 		unsigned int getArmorDamageReduction(void) const;
 
 		void rangedAttack(std::string const &target);
@@ -43,8 +48,14 @@ private:
 		unsigned int _maxEnergyPoints;
 		unsigned int _level;
 		std::string _name;
+
 		unsigned int _meleeAttackDamage;
 		unsigned int _rangedAttackDamage;
+		unsigned int _grenadeDamage;
+		unsigned int _coldDamage;
+		unsigned int _fireDamage;
+
+
 		unsigned int _armorDamageReduction;
 };
 
