@@ -8,6 +8,7 @@ int main()
 	Fixed d;
 	Fixed e(42.42f);
 	a = Fixed( 1234.4321f );
+	
 	std::cout << "a = " << a << std::endl;
 	std::cout << "b = " << b << std::endl;
 	std::cout << "c = " << c << std::endl;
@@ -76,5 +77,23 @@ int main()
 	std::cout << "Testing operator <=: " << std::endl;
 	std::cout << a << " <= " << b << " ? "  << (a <= b) << std::endl;
 	std::cout << c << " <= " << e << " ? "  << (c <= e) << std::endl;
-	return (0);
+	std::cout << "=======================" << std::endl;
+	std::cout << "Testing operator ==: " << std::endl;
+	std::cout << a << " == " << b << " ? "  << (a == b) << std::endl;
+	std::cout << c << " == " << e << " ? "  << (c == e) << std::endl;
+	std::cout << "=======================" << std::endl;
+	std::cout << "Testing operator <=: " << std::endl;
+	std::cout << a << " != " << b << " ? "  << (a != b) << std::endl;
+	std::cout << c << " != " << e << " ? "  << (c != e) << std::endl;
+
+	std::cout << "=======================" << std::endl;
+	std::cout << "Testing min " << std::endl;
+	std::cout << "Min bettween " << a << " and " << b << " : " << Fixed::min(a, b) << std::endl;
+	std::cout << "Min bettween " << c << " and " << b << " : " << Fixed::min(c, b) << std::endl;
+
+	std::cout << "=======================" << std::endl;
+	std::cout << "Testing max " << std::endl;
+	std::cout << "Max bettween " << a << " and " << b << " : " << Fixed::max(a, b) << std::endl;
+	std::cout << "Max bettween " << c << " and " << b << " : " << Fixed::max(c, b) << std::endl;
+	return 0;
 }

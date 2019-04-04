@@ -7,7 +7,11 @@ std::string removeSpaces(std::string str)
 {
 	std::stringstream stream;
 	std::string temp;
+	size_t i = str.length();
 
+	while (isspace(str[i - 1]))
+		i--;
+	str.erase(i, str.length() - i);
 	stream << str;
 	str.clear();
 	while (!stream.eof())
@@ -39,13 +43,13 @@ void do_operation(t_list **stack, char op)
 	delete (*stack)->num;
 	pop_head(stack);
 	if (op == '+')
-		res = new Fixed(a + b);
+		res = new Fixed(b + a);
 	if (op == '-')
-		res = new Fixed(a - b);
+		res = new Fixed(b - a);
 	if (op == '*')
-		res = new Fixed(a * b);
+		res = new Fixed(b * a);
 	if (op == '/')
-		res = new Fixed(a / b);
+		res = new Fixed(b / a);
 	push_head(stack, res, ' ');
 }
 

@@ -2,7 +2,7 @@
 
 int main()
 {
-	Logger a = Logger("Temp");
+	Logger a = Logger("src");
 	Logger b = Logger("Temp2");
 	a.log("logToConsole", "Hello");
 	a.log("logToFile", "Ok");

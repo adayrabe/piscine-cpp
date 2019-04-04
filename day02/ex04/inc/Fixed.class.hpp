@@ -32,6 +32,11 @@ class Fixed
 		Fixed& operator--();
 		Fixed operator--(int);
 
+		static Fixed& min(Fixed &first, Fixed &second);
+		static Fixed const & min(Fixed const &first, Fixed const &second);
+		static Fixed& max(Fixed &first, Fixed &second);
+		static Fixed const & max(Fixed const &first, Fixed const &second);
+
 	private:
 
 		int _fixedPoint;
@@ -39,10 +44,6 @@ class Fixed
 };
 
 std::ostream& operator<<(std::ostream &o, Fixed const &num);
-Fixed& min(Fixed &first, Fixed &second);
-Fixed const & min(Fixed const &first, Fixed const &second);
-Fixed& max(Fixed &first, Fixed &second);
-Fixed const & max(Fixed const &first, Fixed const &second);
 Fixed eval_expr(std::string str);
 
 #endif

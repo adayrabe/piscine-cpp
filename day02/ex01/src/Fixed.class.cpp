@@ -18,14 +18,14 @@ Fixed::Fixed(Fixed const &other)
 Fixed::Fixed(int const num)
 {
 	std::cout << "Int constructor called" << std::endl;
-	_fixedPoint = num << this->_fractionalBits;
+	this->_fixedPoint = num << Fixed::_fractionalBits;
 	return ;
 }
 
 Fixed::Fixed (float const num)
 {
 	std::cout << "Float constructor called" << std::endl;
-	_fixedPoint = roundf(num * (1 << this->_fractionalBits));
+	this->_fixedPoint = roundf(num * (1 << Fixed::_fractionalBits));
 	return ;
 }
 
@@ -37,7 +37,7 @@ Fixed::~Fixed(void)
 
 Fixed&  Fixed::operator=(Fixed const &other)
 {
-	std::cout << "Assination operator called" << std::endl;
+	std::cout << "Assignation operator called" << std::endl;
 	this->_fixedPoint = other.getRawBits();
 	return *this;
 }
@@ -58,12 +58,12 @@ void Fixed::setRawBits(int const raw)
 float Fixed::toFloat(void) const
 {
 	return ((float)this->_fixedPoint /
-		(float)(1 <<  this->_fractionalBits));
+		(float)(1 << Fixed::_fractionalBits));
 }
 
 int Fixed::toInt(void) const
 {
-	return this->_fixedPoint >> this->_fractionalBits;
+	return this->_fixedPoint >> Fixed::_fractionalBits;
 }
 
 std::ostream& operator<<(std::ostream &o, Fixed const &num)

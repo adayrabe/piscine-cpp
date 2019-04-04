@@ -15,13 +15,13 @@ Fixed::Fixed(Fixed const &other)
 
 Fixed::Fixed(int const num)
 {
-	_fixedPoint = num << this->_fractionalBits;
+	this->_fixedPoint = num << Fixed::_fractionalBits;
 	return ;
 }
 
 Fixed::Fixed (float const num)
 {
-	_fixedPoint = roundf(num * (1 << this->_fractionalBits));
+	this->_fixedPoint = roundf(num * (1 << Fixed::_fractionalBits));
 	return ;
 }
 
@@ -50,12 +50,12 @@ void Fixed::setRawBits(int const raw)
 float Fixed::toFloat(void) const
 {
 	return ((float)this->_fixedPoint /
-		(float)(1 << this->_fractionalBits));
+		(float)(1 << Fixed::_fractionalBits));
 }
 
 int Fixed::toInt(void) const
 {
-	return this->_fixedPoint >> this->_fractionalBits;
+	return this->_fixedPoint >> Fixed::_fractionalBits;
 }
 
 bool Fixed::operator>(Fixed const &other) const
@@ -147,7 +147,7 @@ std::ostream& operator<<(std::ostream &o, Fixed const &num)
 	return o;
 }
 
-Fixed& min(Fixed &first, Fixed &second)
+Fixed& Fixed::min(Fixed &first, Fixed &second)
 {
 	if (first.getRawBits() < second.getRawBits())
 		return first;
@@ -155,7 +155,7 @@ Fixed& min(Fixed &first, Fixed &second)
 		return second;
 }
 
-Fixed const & min(Fixed const &first, Fixed const &second)
+Fixed const & Fixed::min(Fixed const &first, Fixed const &second)
 {
 	if (first.getRawBits() < second.getRawBits())
 		return first;
@@ -163,7 +163,7 @@ Fixed const & min(Fixed const &first, Fixed const &second)
 		return second;
 }
 
-Fixed& max(Fixed &first, Fixed &second)
+Fixed& Fixed::max(Fixed &first, Fixed &second)
 {
 	if (first.getRawBits() > second.getRawBits())
 		return first;
@@ -171,7 +171,7 @@ Fixed& max(Fixed &first, Fixed &second)
 		return second;
 }
 
-Fixed const & max(Fixed const &first, Fixed const &second)
+Fixed const & Fixed::max(Fixed const &first, Fixed const &second)
 {
 	if (first.getRawBits() > second.getRawBits())
 		return first;

@@ -39,6 +39,11 @@ void Logger::logToFile(std::string const str)
 {
 	std::ofstream ofs;
 	ofs.open((this->_fileName), std::ios_base::app);
+	if (!ofs.good())
+	{
+		std::cerr << "Error: " << this->_fileName << ": "<< strerror(errno) << std::endl;
+		return ;
+	}
 	ofs << str;
 	return ;
 }

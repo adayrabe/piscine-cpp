@@ -1,5 +1,4 @@
-.idea/workspace.xml
-.idea/modules.xml
+.idea/
 cmake*
 *.[oa]
-/**/.DS_Store
+.DS_Store

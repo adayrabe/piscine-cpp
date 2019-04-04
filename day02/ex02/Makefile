@@ -16,7 +16,7 @@ $(NAME) : $(OBJ) $(INC_DIR)*
 	clang++ $(FLAGS) $(OBJ) -o $(NAME)
 
 $(OBJ_DIR)%.o:%.cpp
-	mkdir -p obj
+	@mkdir -p obj
 	clang++ $(FLAGS) -I inc/ -c $< -o $@
 clean:
 	rm -rf $(OBJ_DIR)
