@@ -9,17 +9,28 @@ SuperTrap::SuperTrap(void)
 SuperTrap::SuperTrap(std::string const name) : ClapTrap(name), FragTrap(name), NinjaTrap(name)
 {
     std::cout << "SUPER-TP " << this->_name << " is constructed with chosen name. " << std::endl;
-    this->_hitPoints = FragTrap::_hitPoints;
-    this->_maxHitPoints = FragTrap::_maxHitPoints;
-    this->_energyPoints = NinjaTrap::_energyPoints;
-    this->_maxEnergyPoints = NinjaTrap::_maxEnergyPoints;
+//    this->_hitPoints = FragTrap::_hitPoints;
+//    this->_maxHitPoints = FragTrap::_maxHitPoints;
+//    this->_energyPoints = NinjaTrap::_energyPoints;
+//    this->_maxEnergyPoints = NinjaTrap::_maxEnergyPoints;
+//    this->_level = 1;
+//    this->_meleeAttackDamage = NinjaTrap::_meleeAttackDamage;
+//    this->_rangedAttackDamage = FragTrap::_rangedAttackDamage;
+//    this->_grenadeDamage = FragTrap::_grenadeDamage;
+//    this->_coldDamage = NinjaTrap::_coldDamage;
+//    this->_fireDamage = FragTrap::_fireDamage;
+//    this->_armorDamageReduction = FragTrap::_armorDamageReduction;
+    this->_hitPoints = 100;
+    this->_maxHitPoints = 100;
+    this->_energyPoints = 120;
+    this->_maxEnergyPoints = 120;
     this->_level = 1;
-    this->_meleeAttackDamage = NinjaTrap::_meleeAttackDamage;
-    this->_rangedAttackDamage = FragTrap::_rangedAttackDamage;
-    this->_grenadeDamage = FragTrap::_grenadeDamage;
-    this->_coldDamage = NinjaTrap::_coldDamage;
-    this->_fireDamage = FragTrap::_fireDamage;
-    this->_armorDamageReduction = FragTrap::_armorDamageReduction;
+    this->_meleeAttackDamage = 60;
+    this->_rangedAttackDamage = 20;
+    this->_grenadeDamage = 35;
+    this->_coldDamage = 25;
+    this->_fireDamage = 45;
+    this->_armorDamageReduction = 5;
     return ;
 }
 

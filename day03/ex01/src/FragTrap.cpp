@@ -188,11 +188,15 @@ void FragTrap::addEnergyPoints(void)
     if (this->_energyPoints + ENERGY >= this->_maxEnergyPoints)
     {
         std::cout << "Oh yeahh, I am full of energy now!!" << std::endl;
+        if (this->_hitPoints != this->_maxHitPoints)
+            this->_energyPoints -= ENERGY;
         this->_energyPoints = this->_maxEnergyPoints;
         return ;
     }
     std::cout << "Drinking redbull, I've heard it gives you wings" << std::endl;
     this->_energyPoints += ENERGY;
+    std::cout << "My current energy is " << this->_energyPoints << std::endl;
+
     return ;
 }
 

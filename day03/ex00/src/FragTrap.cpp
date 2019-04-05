@@ -195,7 +195,7 @@ void FragTrap::addEnergyPoints(void)
     }
     std::cout << "Drinking redbull, I've heard it gives you wings" << std::endl;
     this->_energyPoints += ENERGY;
-    std::cout << "My cirrent energy is " << this->_energyPoints << std::endl;
+    std::cout << "My current energy is " << this->_energyPoints << std::endl;
 
     return ;
 }
