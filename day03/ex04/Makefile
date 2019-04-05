@@ -1,5 +1,5 @@
 
-NAME := ninjaTrap
+NAME := clapTrap
 
 SRC_DIR := ./src/
 INC_DIR := ./inc/

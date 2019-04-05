@@ -172,6 +172,8 @@ void FragTrap::beRepaired(unsigned int amount)
     {
         std::cout << this->_name << " is now totally repaired." <<std::endl;
         std::cout << "I will soon kill all the humans! He-he-he" << std::endl;
+        if (this->_hitPoints != this->_maxHitPoints)
+            this->_energyPoints -= ENERGY;
         this->_hitPoints = this->_maxHitPoints;
         return ;
     }
@@ -193,6 +195,8 @@ void FragTrap::addEnergyPoints(void)
     }
     std::cout << "Drinking redbull, I've heard it gives you wings" << std::endl;
     this->_energyPoints += ENERGY;
+    std::cout << "My cirrent energy is " << this->_energyPoints << std::endl;
+
     return ;
 }
 
