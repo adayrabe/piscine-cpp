@@ -8,6 +8,7 @@
 #include "AWeapon.hpp"
 
 class PowerFist : public AWeapon{
+public:
     PowerFist();
     PowerFist(PowerFist const &other);
     PowerFist &operator=(PowerFist const &other);

@@ -4,7 +4,7 @@
 
 #include "../inc/PlasmaRifle.hpp"
 
-PlasmaRifle::PlasmaRifle() : AWeapon("Plasme Rifle", 21, 5){
+PlasmaRifle::PlasmaRifle() : AWeapon("Plasme Rifle", 5, 21){
     return;
 }
 

@@ -4,7 +4,7 @@
 
 #include "../inc/PowerFist.hpp"
 
-PowerFist::PowerFist() : AWeapon("Power Fist", 50, 8){
+PowerFist::PowerFist() : AWeapon("Power Fist", 8, 50){
     return;
 }
 
