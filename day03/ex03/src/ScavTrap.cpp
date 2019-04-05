@@ -26,7 +26,7 @@ ScavTrap::ScavTrap(std::string const name): ClapTrap(name)
 ScavTrap::ScavTrap(ScavTrap const &other)
 {
     *this = other;
-    std::cout << "ScavTrap " << this->_name << " is constructed from another ScavTrap! We are just like weasley twins!" << std::endl;
+    std::cout << "ScavTrap " << this->_name << " is constructed from another ScavTrap! We are just like Weasley twins!" << std::endl;
     return ;
 }
 

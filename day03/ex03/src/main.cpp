@@ -1,5 +1,4 @@
-#include "FragTrap.hpp"
-#include "ScavTrap.hpp"
+#include "NinjaTrap.hpp"
 
 void testScavTrap()
 {
@@ -34,6 +33,8 @@ void testScavTrap()
 
 	std::cout << "===============================================" << std::endl;
 	std::cout << "Now testing challenge newcomer function" << std::endl;
+	temp2ScavTrap.challengeNewcomer();
+	temp2ScavTrap.challengeNewcomer();
 	temp2ScavTrap.challengeNewcomer();
 	temp2ScavTrap.challengeNewcomer();
 }
@@ -80,15 +81,47 @@ void testFragTrap()
 	return ;
 }
 
+void testNinjaTrap()
+{
+	std::cout << "Now testing NinjaTrap" << std::endl;
+	NinjaTrap tempNinjaTrap("Donatello");
+
+	std::string testAttacks = "Shredder";
+
+	std::cout << "Testing all five attacks" << std::endl;
+	tempNinjaTrap.rangedAttack(testAttacks);
+	tempNinjaTrap.meleeAttack(testAttacks);
+	tempNinjaTrap.grenadeAttack(testAttacks);
+	tempNinjaTrap.freezingAttack(testAttacks);
+	tempNinjaTrap.fireAttack(testAttacks);
+
+	std::cout << "===============================================" << std::endl;
+	std::cout << "Now testing get damage funciton" << std::endl;
+	tempNinjaTrap.takeDamage(30);
+	tempNinjaTrap.takeDamage(30);
+	tempNinjaTrap.takeDamage(30);
+	tempNinjaTrap.takeDamage(30);
+
+	std::cout << "===============================================" << std::endl;
+	std::cout << "Now testing be repaired function" << std::endl;
+	tempNinjaTrap.beRepaired(50);
+	tempNinjaTrap.beRepaired(50);
+	tempNinjaTrap.beRepaired(50);
+
+	std::cout << "===============================================" << std::endl;
+	std::cout << "Now testing operator=" << std::endl;
+	NinjaTrap temp2 = tempNinjaTrap;
+
+	std::cout << "===============================================" << std::endl;
+	std::cout << "Now testing shoebox function" << std::endl;
+	tempNinjaTrap.ninjaShoebox(FragTrap("Crang"));
+	tempNinjaTrap.ninjaShoebox(ScavTrap("Harley Quinn"));
+	tempNinjaTrap.ninjaShoebox(NinjaTrap("Leonardo"));
+	return ;
+}
+
 int main()
 {
-	testScavTrap();
-	std::cout << "===============================================" << std::endl;
-
-	std::cout << "************************************************" << std::endl;
-	std::cout << "===============================================" << std::endl;
-
-	testFragTrap();
-
+	testNinjaTrap();
 	return (0);
 }

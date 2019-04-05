@@ -2,7 +2,7 @@
 #include "ScavTrap.hpp"
 int main()
 {
-	ScavTrap temp("Harry Potter");
+	ScavTrap temp("Tirion");
 
 	std::string testAttacks = "Joffry";
 
@@ -32,8 +32,6 @@ int main()
 
 	std::cout << "===============================================" << std::endl;
 	std::cout << "Now testing challenge newcomer function" << std::endl;
-	temp2.challengeNewcomer();
-	temp2.challengeNewcomer();
 	temp2.challengeNewcomer();
 	temp2.challengeNewcomer();
 

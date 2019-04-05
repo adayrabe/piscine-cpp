@@ -1,27 +1,25 @@
-#include "ScavTrap.hpp"
+#include "ClapTrap.hpp"
 
-ScavTrap::ScavTrap(void)
+ClapTrap::ClapTrap(void)
 {
-    std::cout << "A default constructor called. It shouldn't have been called at all" << std::endl;
+    std::cout << "Claptrap's default constructor is called" << std::endl;
     return ;
 }
 
-ScavTrap::ScavTrap(std::string const name):_hitPoints(100), _maxHitPoints(100), _energyPoints(50),
-_maxEnergyPoints(50), _level(1), _name(name), _meleeAttackDamage(20), _rangedAttackDamage(15), _grenadeDamage(20),
- _coldDamage(35), _fireDamage(65), _armorDamageReduction(3)
+ClapTrap::ClapTrap(std::string const name): _name(name)
 {
-    std::cout << "SC4V-TP " << this->_name << " is constructed with chosen name. What an awesome imagination you have!" << std::endl;
+    std::cout << "CL4P-TP " << this->_name << " is constructed with chosen name. Prepare to die!" << std::endl;
     return ;
 }
 
-ScavTrap::ScavTrap(ScavTrap const &other)
+ClapTrap::ClapTrap(ClapTrap const &other)
 {
     *this = other;
-    std::cout << "ScavTrap " << this->_name << " is constructed from another ScavTrap! We are just like weasley twins!" << std::endl;
+    std::cout << "ClapTrap " << this->_name << " is constructed from another ClapTrap! Am I a clone or am I real?" << std::endl;
     return ;
 }
 
-ScavTrap& ScavTrap::operator=(ScavTrap const &other)
+ClapTrap& ClapTrap::operator=(ClapTrap const &other)
 {
     this->_hitPoints = other.getHitPoints();
     this->_maxHitPoints = other.getMaxHitPoints();
@@ -38,114 +36,108 @@ ScavTrap& ScavTrap::operator=(ScavTrap const &other)
     return  *this;
 }
 
-ScavTrap::~ScavTrap(void)
+ClapTrap::~ClapTrap(void)
 {
-    std::cout << "Oh nooooo! a ScavTrap " << this->_name << " is now just like Yanoukoviche's political career!\
-Although even this ScavTrap has more chances to survive" << std::endl;
+    std::cout << "ClapTrap " << this->_name << " is no longer seen to be alive! RIP brother!" << std::endl;
     return ;
 }
 
-unsigned int ScavTrap::getHitPoints(void) const
+unsigned int ClapTrap::getHitPoints(void) const
 {
     return this->_hitPoints;
 }
 
-unsigned int ScavTrap::getMaxHitPoints(void) const
+unsigned int ClapTrap::getMaxHitPoints(void) const
 {
     return this->_maxHitPoints;
 }
 
-unsigned int ScavTrap::getEnergyPoints(void) const
+unsigned int ClapTrap::getEnergyPoints(void) const
 {
     return this->_energyPoints;
 }
 
-unsigned int ScavTrap::getMaxEnergyPoints(void) const
+unsigned int ClapTrap::getMaxEnergyPoints(void) const
 {
     return this->_maxEnergyPoints;
 }
 
-unsigned int ScavTrap::getLevel(void) const
+unsigned int ClapTrap::getLevel(void) const
 {
     return this->_level;
 }
 
-std::string ScavTrap::getName(void) const
+std::string ClapTrap::getName(void) const
 {
     return this->_name;
 }
 
-unsigned int ScavTrap::getMeleeAttackDamage(void) const
+unsigned int ClapTrap::getMeleeAttackDamage(void) const
 {
     return this->_meleeAttackDamage;
 }
 
-unsigned int ScavTrap::getRangedAttackDamage(void) const
+unsigned int ClapTrap::getRangedAttackDamage(void) const
 {
     return this->_rangedAttackDamage;
 }
 
-unsigned int ScavTrap::getGrenadeDamage(void) const
+unsigned int ClapTrap::getGrenadeDamage(void) const
 {
     return this->_grenadeDamage;
 }
 
-unsigned int ScavTrap::getColdDamage(void) const
+unsigned int ClapTrap::getColdDamage(void) const
 {
     return this->_coldDamage;
 }
 
-unsigned int ScavTrap::getFireDamage(void) const
+unsigned int ClapTrap::getFireDamage(void) const
 {
     return this->_fireDamage;
 }
 
-unsigned int ScavTrap::getArmorDamageReduction(void) const
+unsigned int ClapTrap::getArmorDamageReduction(void) const
 {
     return (this->_armorDamageReduction);
 }
 
-void ScavTrap::rangedAttack(std::string const &target)
+void ClapTrap::rangedAttack(std::string const &target)
 {
-    std::cout << "I'm just like Robin Hood!" << std::endl;
-    std::cout << "SC4V-TP " << this->_name << " attacks " << target <<
+    std::cout << this->_name << " attacks " << target <<
     " at range, causing " << this->_rangedAttackDamage << " points of damage!" << std::endl;
     return ;
 }
 
-void ScavTrap::meleeAttack(std::string const &target)
+void ClapTrap::meleeAttack(std::string const &target)
 {
-    std::cout << "Come and get some!" << std::endl;
-    std::cout << "SC4V-TP " << this->_name << " attacks " << target <<
+    std::cout << this->_name << " attacks " << target <<
     " at melee, causing " << this->_meleeAttackDamage << " points of damage!" << std::endl;
     return ;
 }
 
-void ScavTrap::grenadeAttack(std::string const &target)
+void ClapTrap::grenadeAttack(std::string const &target)
 {
-    std:: cout << "Hot potato!" << std::endl;
-    std::cout << "SC4V-TP " << this->_name << " attacks " << target <<
+    std::cout << this->_name << " attacks " << target <<
     " with a grenade, causing " << this->_grenadeDamage << " points of damage!" << std::endl;
     return ;
 }
 
-void ScavTrap::freezingAttack(std::string const &target)
+void ClapTrap::freezingAttack(std::string const &target)
 {
-    std::cout << "Freeze! I don't know why I said that." << std::endl;
-    std::cout << "SC4V-TP " << this->_name << " attacks " << target <<
+    std::cout << this->_name << " attacks " << target <<
     " by freezing, causing " << this->_coldDamage << " points of damage!" << std::endl;
     return ;
 }
 
-void ScavTrap::fireAttack(std::string const &target)
+void ClapTrap::fireAttack(std::string const &target)
 {
-    std::cout << "I'll hold you close and won't let go. I'll watch you BUUUUURN!!" << std::endl;
-    std::cout << "SC4V-TP " << this->_name << " attacks " << target <<
+    std::cout << this->_name << " attacks " << target <<
     " by fire, causing " << this->_fireDamage << " points of damage!" << std::endl;
     return ;
 }
 
-void ScavTrap::takeDamage(unsigned int amount)
+void ClapTrap::takeDamage(unsigned int amount)
 {
     if (amount >= this->_hitPoints + this->_armorDamageReduction)
     {
@@ -161,7 +153,7 @@ void ScavTrap::takeDamage(unsigned int amount)
     return ;
 }
 
-void ScavTrap::beRepaired(unsigned int amount)
+void ClapTrap::beRepaired(unsigned int amount)
 {
     if (this->_energyPoints < ENERGY)
     {
@@ -184,7 +176,7 @@ void ScavTrap::beRepaired(unsigned int amount)
     return ;
 }
 
-void ScavTrap::addEnergyPoints(void)
+void ClapTrap::addEnergyPoints(void)
 {
     if (this->_energyPoints + ENERGY >= this->_maxEnergyPoints)
     {
@@ -196,21 +188,3 @@ void ScavTrap::addEnergyPoints(void)
     this->_energyPoints += ENERGY;
     return ;
 }
-
-void ScavTrap::challengeNewcomer()
-{
-    unsigned char i;
-
-    std::cout << "I have an interesting challenge for you" << std::endl;
-    std::ifstream ifs("/dev/random");
-    ifs >> i;
-    ifs.close();
-
-    std::string challenges[] = {"Try to sneeze with opened eyes", "Have fun in your life! It's the biggest challenge",
-                                "Run all over the place and yell: IT'S THE APOCALYPSE TOMORROW!",
-                                "JUST DO IT (that's the challenge, do whatever you have in mind right now)"};
-    i = i % (sizeof(challenges) / sizeof(std::string));
-    std::cout << challenges[i] << std::endl;
-    return ;
-}
-

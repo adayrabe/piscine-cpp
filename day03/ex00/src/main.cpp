@@ -4,7 +4,7 @@ int main()
 {
 	FragTrap temp("Harry Potter");
 
-	std::string testAttacks = "Joffry";
+	std::string testAttacks = "Voldemort";
 
 	std::cout << "Testing all five attacks" << std::endl;
 	temp.rangedAttack(testAttacks);
