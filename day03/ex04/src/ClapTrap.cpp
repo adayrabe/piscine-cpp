@@ -6,7 +6,7 @@ ClapTrap::ClapTrap(void)
     return ;
 }
 
-ClapTrap::ClapTrap(std::string const name): _name(name)
+ClapTrap::ClapTrap(std::string const name): ClapTrap(name)
 {
     std::cout << "CL4P-TP " << this->_name << " is constructed with chosen name. Prepare to die!" << std::endl;
     return ;

@@ -23,6 +23,7 @@ Squad & Squad::operator=(Squad const & other){
     {
         temp = _armyHead->next;
         delete _armyHead;
+        delete _armyHead->unit;
         _armyHead = nullptr;
         _armyHead = temp;
     }

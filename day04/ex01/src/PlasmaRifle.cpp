@@ -9,7 +9,7 @@ PlasmaRifle::PlasmaRifle() : AWeapon("Plasme Rifle", 5, 21){
 }
 
 PlasmaRifle::PlasmaRifle(PlasmaRifle const &other) : AWeapon(other){
-
+	*this = other;
 }
 
 PlasmaRifle & PlasmaRifle::operator=(PlasmaRifle const &other){

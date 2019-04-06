@@ -4,7 +4,7 @@
 
 #include "../inc/MateriaSource.hpp"
 
-MateriaSource::MateriaSource(): _materias(nullptr), _amount(0){
+MateriaSource::MateriaSource():  _amount(0), _materias(nullptr){
     return ;
 }
 

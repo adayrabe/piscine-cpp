@@ -9,5 +9,8 @@ int main() {
 	std::cout << robert << jim << joe;
 	robert.polymorph(jim);
 	robert.polymorph(joe);
+	Sorcerer *temp = new Sorcerer(robert);
+	std::cout << *temp;
+	delete temp;
 	return 0;
 }

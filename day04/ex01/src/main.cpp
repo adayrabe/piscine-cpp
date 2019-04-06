@@ -34,8 +34,8 @@ void mainTests(){
 
 void myTests(){
     Character* tom = new Character("Tom");
-    AWeapon* rifle = new PlasmaRifle();
-    AWeapon* fist = new PowerFist();
+    PlasmaRifle* rifle = new PlasmaRifle();
+    PowerFist* fist = new PowerFist();
     Enemy* jerry = new SuperMutant();
     tom->equip(rifle);
     std::cout << "Tom with a rifle: " << std::endl << *tom;
@@ -55,6 +55,15 @@ void myTests(){
     tom->recoverAP();
     std::cout << *tom;
     tom->attack(jerry);
+
+
+    std::cout << "===================================================" << std::endl;
+    std::cout << "Testing operator= and copy constructors" << std::endl;
+    Character *tempCharacter = new Character(*tom);
+    // std::cout << *tempCharacter;
+    // AWeapon *tempRifle = new PlasmaRifle(*rifle);
+    // tempCharacter->equip(tempRifle);
+    std::cout << *tempCharacter;
     if (jerry->getHP() > 0)
         delete jerry;
     delete tom;
@@ -64,6 +73,9 @@ void myTests(){
 
 int main() {
 	mainTests();
+    std::cout << "===================================================" << std::endl;
+    std::cout << "MY TESTS" << std::endl;
+    std::cout << "===================================================" << std::endl;
 	myTests();
 	return 0;
 }

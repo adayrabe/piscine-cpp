@@ -30,7 +30,7 @@ Sorcerer& Sorcerer::operator=(Sorcerer const &other)
 
 Sorcerer::~Sorcerer()
 {
-    std::cout << _name << ", " << _title << ", is dead. Consequences will never be the same !";
+    std::cout << _name << ", " << _title << ", is dead. Consequences will never be the same !" << std::endl;
 }
 
 std::string Sorcerer::getName() const

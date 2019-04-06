@@ -11,7 +11,7 @@ Character::Character(std::string const & name) : _name(name), _ap(MAX_AP), _weap
     return ;
 }
 
-Character::Character(Character const &other){
+Character::Character(Character const &other): _name(""), _ap(0), _weapon(NULL){
     *this = other;
     return ;
 }
