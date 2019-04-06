@@ -10,8 +10,8 @@ class Enemy{
 private:
     Enemy();
 protected:
-    std::string _type;
     int _hp;
+    std::string _type;
 public:
     Enemy(int hp, std::string const & type);
     Enemy(Enemy const &other);

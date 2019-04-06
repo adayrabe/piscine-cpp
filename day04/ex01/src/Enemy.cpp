@@ -38,6 +38,7 @@ int Enemy::getHP() const{
 
 void Enemy::takeDamage(int amount){
     if (_hp - amount < 0)
-        return ;
-    _hp -= amount;
+        _hp = 0;
+    else
+        _hp -= amount;
 }

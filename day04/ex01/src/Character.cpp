@@ -19,6 +19,7 @@ Character::Character(Character const &other){
 Character & Character::operator= (Character const &other){
     _name = other.getName();
     _ap = other.getAP();
+    return *this;
 }
 
 Character::~Character(){
@@ -38,6 +39,8 @@ void Character::equip(AWeapon* weapon){
 }
 
 void Character::attack(Enemy* enemy){
+    if(!enemy->getHP())
+        return;
     if (_weapon && _ap - _weapon->getAPCost() >= 0) {
         std::cout << _name << " attacks " << enemy->getType() << " with a weapon " << _weapon->getName() << std::endl;
         _ap -= _weapon->getAPCost();
