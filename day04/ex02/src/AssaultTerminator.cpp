@@ -15,6 +15,7 @@ AssaultTerminator::AssaultTerminator(AssaultTerminator const &other){
 }
 
 AssaultTerminator & AssaultTerminator::operator= (AssaultTerminator const &other){
+    (void)other;
     return *this;
 }
 
@@ -23,8 +24,8 @@ AssaultTerminator::~AssaultTerminator(){
     return ;
 }
 
-ISpaceMarine* AssaultTerminator::clone() const{
-    ISpaceMarine *clone = new AssaultTerminator();
+AssaultTerminator* AssaultTerminator::clone() const{
+    AssaultTerminator *clone = new AssaultTerminator();
     return clone;
 }
 

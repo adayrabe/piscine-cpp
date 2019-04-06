@@ -21,13 +21,16 @@ int main() {
 	}
 	std::cout << "=========================================" << std::endl;
 	std::cout << "Testing operator= and copy constructor" << std::endl;
+
+	ISpaceMarine* rock = new TacticalMarine();
+	ISpaceMarine* ann = new AssaultTerminator();
 	Squad *temp = new Squad();
-	temp->push(bob);
-	temp->push(jim);
+	temp->push(rock);
+	temp->push(ann);
 	Squad *temp2 = new Squad(*temp);
 	for (int i = 0; i < vlc->getCount(); ++i)
 	{
-		ISpaceMarine* cur = vlc->getUnit(i);
+		ISpaceMarine* cur = temp2->getUnit(i);
 		cur->battleCry();
 		cur->rangedAttack();
 		cur->meleeAttack();
@@ -35,8 +38,9 @@ int main() {
 	std::cout << "=========================================" << std::endl;
 	std::cout << "Deleting everything..." << std::endl;
 	delete vlc;
-	delete bob;
-	delete jim;
+	// delete bob;
+	// delete jim;
 	delete temp;
+	delete temp2;
 	return 0;
 }

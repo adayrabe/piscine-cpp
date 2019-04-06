@@ -7,13 +7,13 @@
 
 #include <iostream>
 #include "ISpaceMarine.hpp"
-class AssaultTerminator : public ISpaceMarine{
+class AssaultTerminator : public virtual ISpaceMarine{
 public:
     AssaultTerminator();
     AssaultTerminator(AssaultTerminator const &other);
     AssaultTerminator &operator= (AssaultTerminator const &other);
-    ~AssaultTerminator();
-    ISpaceMarine* clone() const;
+    virtual ~AssaultTerminator();
+    AssaultTerminator* clone() const;
     void battleCry() const;
     void rangedAttack() const;
     void meleeAttack() const;

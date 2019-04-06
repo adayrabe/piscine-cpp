@@ -27,7 +27,7 @@ Squad & Squad::operator=(Squad const & other){
         _armyHead = temp;
     }
     for(int i = 0; i < other.getCount(); i++)
-        push(other.getUnit(i));
+        push(other.getUnit(i)->clone());
     return *this;
 }
 
@@ -60,7 +60,7 @@ int Squad::push(ISpaceMarine* unit){
         return _count;
     if (!_armyHead){
         _armyHead = new t_unit();
-        _armyHead->unit = unit->clone();
+        _armyHead->unit = unit;
         _armyHead->next = nullptr;
         _count++;
         return _count;
@@ -68,12 +68,12 @@ int Squad::push(ISpaceMarine* unit){
 
     t_unit *temp = _armyHead;
     while (temp->next){
-//        if (temp == unit)
-//            return _count;
+       if (temp->unit == unit)
+           return _count;
         temp = temp->next;
     }
     temp->next = new t_unit();
-    temp->next->unit = unit->clone();
+    temp->next->unit = unit;
     temp->next->next = nullptr;
     _count++;
     return _count;
