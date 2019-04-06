@@ -21,6 +21,7 @@ AMateria::AMateria(std::string const & type) : _type(type), _xp(0){
 AMateria& AMateria::operator= (AMateria const &other){
     _type = other.getType();
     _xp = other.getXP();
+    return *this;
 }
 
 AMateria::~AMateria(){
@@ -37,4 +38,5 @@ unsigned int AMateria::getXP() const{
 
 void AMateria::use(ICharacter& target){
     _xp += 10;
+    target = target;
 }
