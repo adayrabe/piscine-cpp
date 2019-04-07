@@ -7,6 +7,8 @@
 
 #include "IPlayerAttacks.hpp"
 class PlayerAttacks : IPlayerAttacks{
+public:
+
     typedef struct s_playerAttack{
         Attack *attack;
         struct s_playerAttack *next;

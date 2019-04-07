@@ -9,6 +9,7 @@
 #include "Player.hpp"
 #include "Attack.hpp"
 #include "GameObj.hpp"
+#include "PlayerAttacks.hpp"
 
 class Render
 {
@@ -25,7 +26,7 @@ public:
 	void			init_win();
 	void			key_react();
 	Enemy *			get_enemy()const{return _enemy;}
-	Attack *		get_bullet() const{return _bullet;}
+	// Attack *		get_bullet() const{return _bullet;}
 	Player *		get_player()const{return _player;}
 private:
 
@@ -37,7 +38,7 @@ private:
 	WINDOW *		_win_ptr;
 	WINDOW *		_win1_ptr;
 	Enemy *			_enemy;
-	Attack *		_bullet;
+	PlayerAttacks *		_bullets;
 	Player *		_player;
 
 	void			move_enemy();
