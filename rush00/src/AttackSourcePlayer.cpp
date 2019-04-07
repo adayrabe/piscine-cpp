@@ -2,27 +2,25 @@
 // Created by Artem DAYRABEKOV on 2019-04-06.
 //
 
-#include "../inc/AAttackSource.hpp"
+#include "AttackSourcePlayer.hpp"
 
-AAttackSource::AAttackSource() : _attacks(nullptr){}
+AttackSourcePlayer::AttackSourcePlayer() : _attacks(nullptr){}
 
-AAttackSource::~AAttackSource() {
+AttackSourcePlayer::~AttackSourcePlayer() {
    removeAttacks();
 }
 
-AAttackSource::AAttackSource(AAttackSource const &other) {
+AttackSourcePlayer::AttackSourcePlayer(AttackSourcePlayer const &other) {
     *this = other;
 }
 
-AAttackSource &AAttackSource::operator=(AAttackSource const &other) {
-    t_attack *temp;
-
+AttackSourcePlayer &AttackSourcePlayer::operator=(AttackSourcePlayer const &other) {
     removeAttacks();
     addAttacks(other.get_attacks());
     return *this;
 }
 
-AAttack* AAttackSource::getAttackAt(int ind) const{
+Attack* AttackSourcePlayer::getAttackAt(int ind) const{
     t_attack *temp = _attacks;
     for (int i = 0; i < ind; i++) {
         if (!temp)
@@ -34,18 +32,18 @@ AAttack* AAttackSource::getAttackAt(int ind) const{
 
 
 
-AAttackSource::AAttackSource(t_attack *attacks) {
+AttackSourcePlayer::AttackSourcePlayer(t_attack *attacks) {
     addAttacks(attacks);
 }
 
-void AAttackSource::addAttacks(t_attack *attacks) {
+void AttackSourcePlayer::addAttacks(t_attack *attacks) {
     for(int i = 0; attacks; i++) {
-        learnAttack(attacks->attack->clone());
+        learnAttack(attacks->attack->clone(), attacks->button);
         attacks = attacks->next;
     }
 }
 
-void AAttackSource::removeAttacks() {
+void AttackSourcePlayer::removeAttacks() {
     t_attack *temp;
 
     while (_attacks)
@@ -57,17 +55,18 @@ void AAttackSource::removeAttacks() {
     }
 }
 
-AAttackSource::t_attack *AAttackSource::get_attacks() const {
+AttackSourcePlayer::t_attack *AttackSourcePlayer::get_attacks() const {
     return _attacks;
 }
 
-void AAttackSource::learnAttack(AAttack *attack) {
+void AttackSourcePlayer::learnAttack(Attack *attack, unsigned char button) {
     if (!attack)
         return ;
     if (!_attacks) {
         _attacks = new t_attack();
         _attacks->next = nullptr;
         _attacks->attack = attack;
+        _attacks->button = button;
     }
     else{
         t_attack *temp = _attacks;
@@ -75,15 +74,16 @@ void AAttackSource::learnAttack(AAttack *attack) {
             temp = temp->next;
         temp->next = new t_attack();
         temp->next->attack = attack;
+        temp->next->button = button;
         temp->next->next = nullptr;
     }
 }
 
-AAttack *AAttackSource::createAttack(std::string const &name) {
+Attack *AttackSourcePlayer::createAttack(unsigned char button) {
 
     t_attack *temp = _attacks;
     while (temp){
-        if (temp->attack->get_name() == name)
+        if (temp->button == button)
             return temp->attack;
         temp = temp->next;
     }
