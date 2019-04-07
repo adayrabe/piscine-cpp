@@ -2,9 +2,7 @@
 // Created by Artem DAYRABEKOV on 2019-04-07.
 //
 
-#include <Enemies.hpp>
-
-#include "Enemies.hpp"
+#include "../inc/Enemies.hpp"
 
 
 int Enemies::_amount = 0;

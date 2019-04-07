@@ -2,13 +2,11 @@
 // Created by Artem DAYRABEKOV on 2019-04-06.
 //
 
-#include <Attack.hpp>
+#include "../inc/Attack.hpp"
 
-#include "Attack.hpp"
+Attack::Attack() : GameObj('*', 0, 0), _damage(0), _name(""), _index(0) {}
 
-Attack::Attack() : _damage(0), _name(0){}
-
-Attack::Attack(int _damage, const std::string &_name) : _damage(_damage), _name(_name) {}
+Attack::Attack(int _damage, const std::string &_name) : GameObj('*', 0, 0), _damage(_damage), _name(_name), _index(0) {}
 
 
 Attack::~Attack() {

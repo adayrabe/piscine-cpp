@@ -24,7 +24,9 @@ public:
 	int				get_wh() const;
 	void			init_win();
 	void			key_react();
-	
+	Enemy *			get_enemy()const{return _enemy;}
+	Attack *		get_bullet() const{return _bullet;}
+	Player *		get_player()const{return _player;}
 private:
 
 	int				_ww;
@@ -34,12 +36,12 @@ private:
 	size_t			_render_time;
 	WINDOW *		_win_ptr;
 	WINDOW *		_win1_ptr;
-	Enemy			_enemy;
-	Attack			_bullet;
-	Player			_player;
+	Enemy *			_enemy;
+	Attack *		_bullet;
+	Player *		_player;
 
-	void			move_enemy(size_t cur_time);
-	void			shoot(size_t cur_time);
+	void			move_enemy();
+	void			shoot();
 };
 
 #endif

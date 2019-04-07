@@ -3,7 +3,7 @@
 #include "../inc/GameObj.hpp"
 #include <iostream>
 
-Player::Player	(void) : GameObj('P', 2, 12) {}
+Player::Player	(void) : GameObj('P', 2, 12) { std::cout << "player\n";}
 
 Player::Player	(Player const & inst)
 {

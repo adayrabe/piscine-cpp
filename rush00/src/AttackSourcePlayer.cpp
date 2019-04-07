@@ -2,7 +2,7 @@
 // Created by Artem DAYRABEKOV on 2019-04-06.
 //
 
-#include "AttackSourcePlayer.hpp"
+#include "../inc/AttackSourcePlayer.hpp"
 
 AttackSourcePlayer::AttackSourcePlayer() : _attacks(nullptr){}
 

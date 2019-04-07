@@ -2,7 +2,7 @@
 // Created by Artem DAYRABEKOV on 2019-04-07.
 //
 
-#include "PlayerAttacks.hpp"
+#include "../inc/PlayerAttacks.hpp"
 
 int PlayerAttacks::_amount = 0;
 
@@ -64,7 +64,7 @@ void PlayerAttacks::push(Attack *attack) {
         temp->next->attack = attack;
         temp->next->next = nullptr;
     }
-    attack->set_index(_amount);
+    // attack->set_index(_amount);
     _amount++;
 }
 
@@ -73,10 +73,11 @@ void PlayerAttacks::removeAttack(int index) {
         return ;
     t_playerAttack *temp = _playerAttacks;
     t_playerAttack *temp_prev = nullptr;
+	index = 0;
     while (temp)
     {
-        if (index == temp->attack->get_index())
-            break;
+        // if (index == temp->attack->get_index())
+        //     break;
         temp_prev = temp;
         temp = temp->next;
     }

@@ -2,9 +2,9 @@
 // Created by Artem DAYRABEKOV on 2019-04-07.
 //
 
-#include "AttackSourceEnemy.hpp"
+#include "../inc/AttackSourceEnemy.hpp"
 
-AttackSourceEnemy::AttackSourceEnemy() : _attacks(nullptr){}
+AttackSourceEnemy::AttackSourceEnemy() : _attacks(){}
 
 AttackSourceEnemy::~AttackSourceEnemy() {
     removeAttacks();

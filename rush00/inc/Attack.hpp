@@ -11,9 +11,8 @@
 class Attack : public GameObj {
 private:
     int _damage;
-    int _index;
     std::string _name;
-
+	int _index;
 public:
     Attack();
 

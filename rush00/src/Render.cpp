@@ -12,6 +12,13 @@ Render::Render	(Render const & inst)
 Render::Render	(int ww, int wh, int w1w, int w1h) :
 _ww(ww), _wh(wh), _w1w(w1w), _w1h(w1h)
 {
+	std::cout << _ww;
+	std::cout << _wh;
+	std::cout << _w1w;
+	std::cout << _w1h;
+ 	_enemy = new Enemy();
+	_bullet = new Attack();
+	_player = new Player();
 	this->init_win();
 }
 
@@ -21,6 +28,9 @@ Render &		Render::operator=(Render const & inst)
 {
     this->_ww = inst.get_ww();
 	this->_wh = inst.get_wh();
+	_enemy = new Enemy(*(inst.get_enemy()));
+	_bullet = new Attack(*(inst.get_bullet()));
+	_player = new Player(*(inst.get_player()));
     return *this;
 }
 
@@ -37,8 +47,8 @@ int				Render::get_wh() const
 void			Render::key_react()
 {
 	int ch = getch();
-	int x = this->_player.get_x();
-	int y = this->_player.get_y();
+	int x = this->_player->get_x();
+	int y = this->_player->get_y();
 	if (ch == 27)
 	{
 		delwin(this->_win_ptr);
@@ -57,45 +67,44 @@ void			Render::key_react()
 		else if (ch == KEY_RIGHT)
 			x++;
 		if (x > 0 && x < _ww - 1)
-			this->_player.set_x(x);
+			this->_player->set_x(x);
 		if (y > 0 && y < _wh - 1)
-			this->_player.set_y(y);
+			this->_player->set_y(y);
 	}
 	else if (ch == ' ')
 	{	
-		this->_bullet.set_x(this->_player.get_x());
-		this->_bullet.set_y(this->_player.get_y());
-		this->_bullet.set_obj_time(this->_render_time);
-		this->shoot(this->_render_time);
+		this->_bullet->set_x(this->_player->get_x());
+		this->_bullet->set_y(this->_player->get_y());
+		this->_bullet->set_obj_time(this->_render_time);
+		this->shoot();
 	}
 }
 
-void			Render::shoot(size_t cur_time)
+void			Render::shoot()
 {
-	if (cur_time >= this->_bullet.get_obj_time())
+	if (this->_render_time - this->_bullet->get_obj_time() >= 1000)
 	{
-		if (this->_bullet.get_x() < this->_ww - 1)
+		if (this->_bullet->get_x() < this->_ww - 2)
 		{
-			mvwaddch(this->_win_ptr, this->_bullet.get_y(),
-			this->_bullet.get_x(), this->_bullet.get_icon());
-			this->_bullet.set_x(this->_bullet.get_x() + 1);
-			this->_bullet.set_obj_time(cur_time);
-			usleep(1000);
+			this->_bullet->set_x(this->_bullet->get_x() + 1);
+			this->_bullet->set_obj_time(this->_render_time);
+		}
+		else
+		{
+			delete this->_bullet;
+			this->_bullet = nullptr;
 		}
 	}
 }
 
-void			Render::move_enemy(size_t cur_time)
+void			Render::move_enemy()
 {
-	if (cur_time >= this->_enemy.get_obj_time())
+	if (this->_render_time - this->_enemy->get_obj_time() >= 10000)
 	{
-		mvwaddch(this->_win_ptr, this->_enemy.get_y(),
-		this->_enemy.get_x() - 1, this->_enemy.get_icon());
-		this->_enemy.set_x(this->_enemy.get_x() - 1);
-		this->_enemy.set_obj_time(cur_time);
-		usleep(100000);
-		if (this->_enemy.get_x() == 1)
-			this->_enemy.set_x(73);
+		this->_enemy->set_x(this->_enemy->get_x() - 1);
+		this->_enemy->set_obj_time(this->_render_time);
+		if (this->_enemy->get_x() == 1)
+			this->_enemy->set_x(73);
 	}
 }
 
@@ -107,8 +116,6 @@ void			Render::init_win()
 	nodelay(stdscr, TRUE);
 	keypad(stdscr, TRUE);
 	curs_set(0);
-	
-	this->_enemy.set_obj_time(_render_time); 
 	while (1)
 	{
 		this->_render_time = clock();
@@ -116,18 +123,21 @@ void			Render::init_win()
 		this->_win1_ptr = newwin(this->_w1h, this->_w1w,
 		0, this->_ww);
 		werase(this->_win_ptr);
-		wborder(this->_win_ptr, '|', '|', '-', '-', '*', '*',
-		'*', '*');
-		wborder(this->_win1_ptr, '|', '|', '-', '-', '*', '*',
-		'*', '*');
+		box(this->_win_ptr, 0, 0);
+		box(this->_win1_ptr, 0, 0);
 		this->key_react();
-		mvwaddch(this->_win_ptr, this->_player.get_y(),
-		this->_player.get_x(), this->_player.get_icon());
-		this->move_enemy(this->_render_time);
-		if (this->_bullet.get_x() || this->_bullet.get_y())
-			shoot(this->_render_time);
-		usleep(500);
+		mvwaddch(this->_win_ptr, this->_player->get_y(),
+		this->_player->get_x(), this->_player->get_icon());
+		this->move_enemy();
+		if (this->_bullet && (this->_bullet->get_x() || this->_bullet->get_y()))
+			shoot();
+		mvwaddch(this->_win_ptr, this->_enemy->get_y(),
+		this->_enemy->get_x() - 1, this->_enemy->get_icon());
+		if (this->_bullet)
+			mvwaddch(this->_win_ptr, this->_bullet->get_y(),
+			this->_bullet->get_x(), this->_bullet->get_icon());
 		wrefresh(this->_win_ptr);
 		wrefresh(this->_win1_ptr);
+		usleep(500);
 	}
 }

@@ -1,30 +1,66 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: akulaiev <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2019/04/01 19:48:51 by akulaiev          #+#    #+#              #
+#    Updated: 2019/04/01 19:48:53 by akulaiev         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-NAME := sorcerer
-
-SRC_DIR := ./src/
-INC_DIR := ./inc/
-OBJ_DIR := ./obj/
-INC_DIR := ./inc/
-
-SRC := $(wildcard src/*.cpp)
-OBJ = $(addprefix $(OBJ_DIR), $(SRC:src/%.cpp=%.o))
-FLAGS := -Wall -Wextra -Werror
-
+SRC =	main.cpp\
+		Render.cpp\
+		GameObj.cpp\
+		Player.cpp\
+		Attack.cpp\
+		AttackSourceEnemy.cpp\
+		AttackSourcePlayer.cpp\
+		Enemy.cpp\
+		Enemies.cpp\
+		PlayerAttacks.cpp
+SRC_DIR = ./src/
+OBJ_DIR = ./obj/
+OBJ = $(addprefix $(OBJ_DIR),$(SRC:.cpp=.o))
+NAME = rush
+CFLAG = -Wall -Wextra -Werror
+CC = clang++
+INC =	./inc/Render.hpp\
+		./inc/Player.hpp\
+		./inc/GameObj.hpp\
+		./inc/Attack.hpp\
+		./inc/Enemy.hpp\
+		./inc/AttackSourceEnemy.hpp\
+		./inc/AttackSourcePlayer.hpp\
+		./inc/Enemy.hpp\
+		./inc/Enemies.hpp\
+		./inc/PlayerAttacks.hpp
 all: $(NAME)
 
-$(NAME) : $(OBJ_DIR) $(OBJ)
-	clang++ $(FLAGS) $(OBJ) -o $(NAME)
+$(NAME): $(OBJ_DIR) $(OBJ)
+	$(CC) $(CFLAG) -lncurses $(OBJ) -o $(NAME)
 
 $(OBJ_DIR):
-	mkdir -p $(OBJ_DIR)	
+	mkdir $(OBJ_DIR)
 
-$(OBJ_DIR)%.o:%.cpp $(INC_DIR)*
-	clang++ $(FLAGS) -I inc/ -c $< -o $@
+$(OBJ_DIR)%.o:$(SRC_DIR)%.cpp $(INC)
+	$(CC) $(CFLAG) -I/includes -c $< -o $@
+
 clean:
 	rm -rf $(OBJ_DIR)
+	rm -f $(OBJ)
+
 fclean: clean
-	rm -rf $(NAME)
+	rm -f $(NAME)
+
+exe:
+	./$(NAME)
+
 re: fclean all
 
-.PHONY: all clean fclean re
-vpath %.cpp $(SRC_DIR)
+commit:
+	make fclean
+	git add -A
+	git commit -m "$(MSG)"
+	git push

@@ -17,7 +17,7 @@ public:
     int get_index() const;
 
     void set_index(int _index);
-
+	Enemy &			operator=(Enemy const & inst);
 private:
     int _index;
 };
