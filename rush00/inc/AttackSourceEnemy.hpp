@@ -1,0 +1,14 @@
+//
+// Created by Artem DAYRABEKOV on 2019-04-07.
+//
+
+#ifndef RUSH00_ATTACKSOURCEENEMY_HPP
+#define RUSH00_ATTACKSOURCEENEMY_HPP
+
+
+class AttackSourceEnemy {
+
+};
+
+
+#endif //RUSH00_ATTACKSOURCEENEMY_HPP
