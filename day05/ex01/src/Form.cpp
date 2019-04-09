@@ -17,30 +17,19 @@ Form::Form(const int gradeSign, const int gradeExecute, std::string name) : _gra
 																			_gradeExecute(gradeExecute),
 																			_name(name)
 {
-	try
-	{
-		if (_gradeSign < _highest)
-		{
-			throw GradeTooHighException("Sign ");
-		}
-		if (_gradeSign > _lowest)
-		{
-			throw GradeTooLowException("Sign ");
-		}
-		if (_gradeExecute < _highest)
-			throw GradeTooHighException("Execute ");
-		if (_gradeExecute > _lowest)
-			throw GradeTooLowException("Execute ");
 
-	}
-	catch (GradeTooHighException &e)
+	if (_gradeSign < _highest)
 	{
-		std::cerr << e.getMessage() << e.what() << std::endl;
+		throw GradeTooHighException("Sign ");
 	}
-	catch (GradeTooLowException &e)
+	if (_gradeSign > _lowest)
 	{
-		std::cerr << e.getMessage() << e.what() << std::endl;
+		throw GradeTooLowException("Sign ");
 	}
+	if (_gradeExecute < _highest)
+		throw GradeTooHighException("Execute ");
+	if (_gradeExecute > _lowest)
+		throw GradeTooLowException("Execute ");
 }
 
 Form::Form(Form const &other) : _gradeSign(other.getGradeSign()),
@@ -83,9 +72,10 @@ const std::string &Form::getName() const
 void Form::beSigned(Bureaucrat const &bureaucrat)
 {
 	if (bureaucrat.getGrade() > _gradeSign)
+	{
 		throw GradeTooLowException();
+	}
 	_signed = true;
-
 }
 
 Form::GradeTooHighException::GradeTooHighException(){}

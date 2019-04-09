@@ -75,7 +75,7 @@ class Form
 
 		bool isASigned() const;
 
-		void beSigned(Bureaucrat const& bureaucrat);
+		void beSigned(Bureaucrat const &bureaucrat);
 };
 
 std::ostream &operator<<(std::ostream &os, const Form &form);

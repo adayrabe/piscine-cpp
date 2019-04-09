@@ -17,27 +17,11 @@ Bureaucrat::Bureaucrat(Bureaucrat const &other) :_name(other.getName()), _grade(
 
 Bureaucrat::Bureaucrat(const std::string &name, int grade) : _name(name), _grade(grade)
 {
-	try
-	{
-		if (_grade < _highest)
-		{
-			_grade = _highest;
-			throw GradeTooHighException();
-		}
-		if (_grade > _lowest)
-		{
-			_grade = _lowest;
-			throw GradeTooLowException();
-		}
-	}
-	catch (GradeTooHighException &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
-	catch (GradeTooLowException &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+
+	if (_grade < _highest)
+		throw GradeTooHighException();
+	if (_grade > _lowest)
+		throw GradeTooLowException();
 
 }
 
@@ -61,32 +45,20 @@ int Bureaucrat::getGrade() const
 
 void Bureaucrat::increment()
 {
-	try
-	{
-		if (_grade == _highest)
-			throw GradeTooHighException();
-		_grade--;
-	}
-	catch (GradeTooHighException &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+
+	if (_grade == _highest)
+		throw GradeTooHighException();
+	_grade--;
 
 }
 
 void Bureaucrat::decrement()
 {
-	try
-	{
-		if (_grade == _lowest)
-			throw GradeTooLowException();
-		_grade++;
-	}
-	catch (GradeTooLowException &e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	if (_grade == _lowest)
+		throw GradeTooLowException();
+	_grade++;
 }
+
 
 void Bureaucrat::signForm(Form &form)
 {

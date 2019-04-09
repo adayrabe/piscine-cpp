@@ -4,16 +4,42 @@
 
 int main() {
 
+	try
 	{
 		std::cout << "Testing invalid forms" << std::endl;
 		Form tempForm1(0, 155, "tempForm1");
 		std::cout << tempForm1;
-		Form tempForm2(12, 0, "tempForm2");
-		std::cout << tempForm2;
-		Form tempForm3(155, 0, "tempForm3");
-		std::cout << tempForm3;
-		Form tempForm4(1, 151, "tempForm4");
-		std::cout << tempForm4;
+	}
+	catch (Form::GradeTooHighException &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	try
+	{
+		Form tempForm1(12, 0, "tempForm1");
+		std::cout << tempForm1;
+	}
+	catch (Form::GradeTooHighException &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	try
+	{
+		Form tempForm1(155, 0, "tempForm1");
+		std::cout << tempForm1;
+	}
+	catch (Form::GradeTooLowException &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	try
+	{
+		Form tempForm1(1, 151, "tempForm1");
+		std::cout << tempForm1;
+	}
+	catch (Form::GradeTooLowException &e)
+	{
+		std::cout << e.what() << std::endl;
 	}
 	{
 		std::cout << "===========================================" << std::endl;
@@ -29,6 +55,5 @@ int main() {
 		Bureaucrat tempBureaucrat1("tempBureaucrat1", 5);
 		tempBureaucrat1.signForm(tempForm1);
 	}
-
 	return 0;
 }
