@@ -4,19 +4,19 @@
 
 #ifndef CONTROLLER_IATTACKSOURCE_HPP
 #define CONTROLLER_IATTACKSOURCE_HPP
-#include "AAttack.hpp"
+#include "Attack.hpp"
 
 class IAttackSource
 {
 public:
 //    typedef struct s_attack{
-//        AAttack *attack;
+//        Attack *attack;
 //        struct  s_attack *next;
 //    }t_attack;
 
     virtual ~IAttackSource() {}
-    virtual void learnAttack(AAttack *) = 0;
-    virtual AAttack *createAttack(std::string const &type) = 0;
+    virtual void learnAttack(Attack *, unsigned char button) = 0;
+    virtual Attack *createAttack(unsigned char button) = 0;
 };
 
 #endif //CONTROLLER_IATTACKSOURCE_HPP
