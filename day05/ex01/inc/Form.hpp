@@ -22,20 +22,31 @@ class Form
 
 		class GradeTooHighException : public std::exception
 		{
+			private:
+				std::string _message;
 			public:
 				GradeTooHighException();
+
+				GradeTooHighException(const std::string &message);
+
 				GradeTooHighException(GradeTooHighException const &other);
 				GradeTooHighException &operator=(GradeTooHighException const &other);
 
 				virtual ~GradeTooHighException() throw();
 
 				virtual const char* what() const throw();
+
+				const std::string &getMessage() const;
 		};
 
 		class GradeTooLowException
 		{
+			private:
+				std::string _message;
 			public:
 				GradeTooLowException();
+
+				GradeTooLowException(const std::string &message);
 
 				GradeTooLowException(GradeTooLowException const &other);
 
@@ -43,6 +54,9 @@ class Form
 
 				virtual ~GradeTooLowException() throw();
 				virtual const char* what() const throw();
+
+				const std::string &getMessage() const;
+
 		};
 
 		Form(const int gradeSign, const int gradeExecute, std::string name);

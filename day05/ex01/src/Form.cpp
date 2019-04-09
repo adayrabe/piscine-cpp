@@ -19,22 +19,27 @@ Form::Form(const int gradeSign, const int gradeExecute, std::string name) : _gra
 {
 	try
 	{
-		if (_gradeSign < _highest || _gradeExecute < _highest)
+		if (_gradeSign < _highest)
 		{
-			throw GradeTooHighException();
+			throw GradeTooHighException("Sign ");
 		}
-		if (_gradeSign > _lowest || _gradeExecute > _lowest)
+		if (_gradeSign > _lowest)
 		{
-			throw GradeTooLowException();
+			throw GradeTooLowException("Sign ");
 		}
+		if (_gradeExecute < _highest)
+			throw GradeTooHighException("Execute ");
+		if (_gradeExecute > _lowest)
+			throw GradeTooLowException("Execute ");
+
 	}
 	catch (GradeTooHighException &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << e.getMessage() << e.what() << std::endl;
 	}
 	catch (GradeTooLowException &e)
 	{
-		std::cerr << e.what() << std::endl;
+		std::cerr << e.getMessage() << e.what() << std::endl;
 	}
 }
 
@@ -100,8 +105,16 @@ Form::GradeTooHighException::~GradeTooHighException() throw(){}
 
 const char *Form::GradeTooHighException::what() const throw()
 {
-	return "Grade is too high";
+	return "grade is too high";
 }
+
+const std::string &Form::GradeTooHighException::getMessage() const
+{
+	return _message;
+}
+
+Form::GradeTooHighException::GradeTooHighException(const std::string &message) : _message(message)
+{}
 
 
 Form::GradeTooLowException::GradeTooLowException(){}
@@ -121,8 +134,16 @@ Form::GradeTooLowException::~GradeTooLowException() throw(){}
 
 const char *Form::GradeTooLowException::what() const throw()
 {
-	return "Grade is too low";
+	return "grade is too low";
 }
+
+const std::string &Form::GradeTooLowException::getMessage() const
+{
+	return _message;
+}
+
+Form::GradeTooLowException::GradeTooLowException(const std::string &message) : _message(message)
+{}
 
 std::ostream &operator<<(std::ostream &os, const Form &form)
 {

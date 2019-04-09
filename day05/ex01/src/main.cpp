@@ -6,11 +6,11 @@ int main() {
 
 	{
 		std::cout << "Testing invalid forms" << std::endl;
-		Form tempForm1(0, 12, "tempForm1");
+		Form tempForm1(0, 155, "tempForm1");
 		std::cout << tempForm1;
 		Form tempForm2(12, 0, "tempForm2");
 		std::cout << tempForm2;
-		Form tempForm3(151, 12, "tempForm3");
+		Form tempForm3(155, 0, "tempForm3");
 		std::cout << tempForm3;
 		Form tempForm4(1, 151, "tempForm4");
 		std::cout << tempForm4;
