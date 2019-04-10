@@ -35,7 +35,8 @@ Form::Form(const int gradeSign, const int gradeExecute, std::string name) : _gra
 Form::Form(Form const &other) : _gradeSign(other.getGradeSign()),
 								_gradeExecute(other.getGradeExecute()),
 								_name(other.getName()),
-								_signed(other.isASigned())
+								_signed(other.isASigned()),
+								_target(other.getTarget())
 {
 
 }
