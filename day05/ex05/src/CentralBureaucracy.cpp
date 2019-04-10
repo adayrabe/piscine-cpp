@@ -4,7 +4,6 @@
 
 #include "CentralBureaucracy.hpp"
 #include <fstream>
-#include <CentralBureaucracy.hpp>
 
 CentralBureaucracy::CentralBureaucracy() : _queue(NULL)
 {
@@ -67,14 +66,13 @@ void CentralBureaucracy::doBureaucracy()
 	std::string forms[3] = {"presidential pardon", "robotomy request", "shrubbery creation"};
 	while (_queue)
 	{
+	    std::cout << "---------------------------------------------------" << std::endl;
 		std::ifstream ifs("/dev/random");
-
 		ifs >> j;
 		ifs.close();
 		j %= 3;
 		temp = _queue->next;
-		if (_queue->first_box == -1)
-			_queue->first_box = i;
+
 		try
 		{
 			_bureaucracy[i].doBureaucracy(forms[j], _queue->target);
@@ -84,50 +82,36 @@ void CentralBureaucracy::doBureaucracy()
 		}
 		catch (OfficeBlock::ExecutorGradeTooLowException &e)
 		{
-			i = (i + 1) % MAX_BLOCKS;
-			if (_queue->first_box == i)
-			{
-				std::cout << "No bureaucrat has enough points to execute" << forms[j] << std::endl;
-				delete _queue;
-				_queue = temp;
-			}
-		}
+		    std::cout << _queue->target << " failed to get " << forms[j] << " because " << e.what() << std::endl;
+            delete _queue;
+            _queue = temp;
+        }
 		catch (OfficeBlock::SignerGradeTooLowException &e)
 		{
-			i = (i + 1) % MAX_BLOCKS;
-			if (_queue->first_box == i)
-			{
-				std::cout << "No bureaucrat has enough points to sign " << forms[j] << std::endl;
-				delete _queue;
-				_queue = temp;
-			}
-		}
+            std::cout << _queue->target << " failed to get " << forms[j] << " because " << e.what() << std::endl;
+            delete _queue;
+            _queue = temp;
+        }
 		catch (OfficeBlock::NoSignerException &e)
 		{
-			i = (i + 1) % MAX_BLOCKS;
-			if (_queue->first_box == i)
-			{
-				std::cout << "No bureaucrat to sign at all" << std::endl;
-				delete _queue;
-				_queue = temp;
-			}
-		}
-		catch  (OfficeBlock::NoExecutorException)
+            std::cout << _queue->target << " failed to get " << forms[j] << " because " << e.what() << std::endl;
+            i = (i + 1) % MAX_BLOCKS;
+            delete _queue;
+            _queue = temp;
+        }
+		catch  (OfficeBlock::NoExecutorException &e)
 		{
-			i = (i + 1) % MAX_BLOCKS;
-			if (_queue->first_box == i)
-			{
-				std::cout << "No bureaucrat to execute at all" << std::endl;
-				delete _queue;
-				_queue = temp;
-			}
+            std::cout << _queue->target << " failed to get " << forms[j] << " because " << e.what() << std::endl;
+            i = (i + 1) % MAX_BLOCKS;
+            delete _queue;
+            _queue = temp;
 		}
-		catch (OfficeBlock::WrongFormNameException)
+		catch (OfficeBlock::WrongFormNameException &e)
 		{
-			std::cout << "Your form has a wrong name" << std::endl;
-			delete _queue;
-			_queue = temp;
-		}
+            std::cout << _queue->target << " failed to get " << forms[j] << " because " << e.what() << std::endl;
+            delete _queue;
+            _queue = temp;
+        }
 
 	}
 }
@@ -138,7 +122,6 @@ void CentralBureaucracy::queueUp(std::string target)
 	{
 		_queue = new t_queue();
 		_queue->target = target;
-		_queue->first_box = -1;
 		_queue->next = NULL;
 	}
 	else
@@ -148,7 +131,6 @@ void CentralBureaucracy::queueUp(std::string target)
 			temp = temp->next;
 		temp->next = new t_queue();
 		temp->next->target = target;
-		temp->next->first_box = -1;
 		temp->next->next = NULL;
 	}
 

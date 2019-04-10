@@ -16,7 +16,6 @@ class CentralBureaucracy
 		{
 			std::string		target;
 			struct s_queue	*next;
-			int				first_box;
 		}t_queue;
 	private:
 		OfficeBlock _bureaucracy[MAX_BLOCKS];
