@@ -31,7 +31,7 @@ void RobotomyRequestForm::action() const
 	ifs.close();
 	i %= 2;
 	std::cout << "Some drilling noises..." << std::endl;
-
+	
 	if (i == 1)
 		std::cout << getTarget() << " has been robotomized" << std::endl;
 	else
