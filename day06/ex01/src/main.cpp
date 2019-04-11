@@ -44,6 +44,7 @@ void* serialize()
             i++;
         }
     }
+    ifs.close();
     return static_cast<void *>(res);
 }
 

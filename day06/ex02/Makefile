@@ -1,5 +1,5 @@
 
-NAME := convert
+NAME := cast
 
 SRC_DIR := ./src/
 INC_DIR := ./inc/
