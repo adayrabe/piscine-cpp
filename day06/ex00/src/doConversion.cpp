@@ -44,7 +44,7 @@ void doFloat(std::string str)
 	float f = atof(str.c_str());
 
 	std::cout << "char: ";
-	if (f > CHAR_MAX || f < CHAR_MIN)
+	if (f > CHAR_MAX || f < CHAR_MIN || str == "nanf")
 		std::cout << "impossible" << std::endl;
 	else
 	{
@@ -55,8 +55,8 @@ void doFloat(std::string str)
 			std::cout << "Non displayable" << std::endl;
 	}
 	std::cout << "int: ";
-	int i;
-	if (f > INT_MAX || f < INT_MIN)
+	int i = 0;
+	if (f > INT_MAX || f < INT_MIN || str == "nanf")
 		std::cout << "impossible" << std::endl;
 	else
 	{
@@ -80,7 +80,7 @@ void doDouble(std::string str)
 	double d = atof(str.c_str());
 
 	std::cout << "char: ";
-	if (d > CHAR_MAX || d < CHAR_MIN)
+	if (d > CHAR_MAX || d < CHAR_MIN || str == "nan")
 		std::cout << "impossible" << std::endl;
 	else
 	{
@@ -91,8 +91,8 @@ void doDouble(std::string str)
 			std::cout << "Non displayable" << std::endl;
 	}
 	std::cout << "int: ";
-	int i;
-	if (d > INT_MAX || d < INT_MIN)
+	int i = 0;
+	if (d > INT_MAX || d < INT_MIN || str == "nan")
 		std::cout << "impossible" << std::endl;
 	else
 	{

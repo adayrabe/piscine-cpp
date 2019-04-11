@@ -8,7 +8,7 @@
 int main(int ac, const char *av[]) {
 	if (ac != 2)
 	{
-		std::cout << "Error. Usage ./convert string";
+		std::cout << "Error. Usage ./convert string" << std::endl;
 		exit (EXIT_FAILURE);
 	}
 	int i = 0;
@@ -24,7 +24,7 @@ int main(int ac, const char *av[]) {
 		doDouble(&av[1][i]);
 	else
 	{
-		std::cout << "Wrong string, can't convert to anything";
+		std::cout << "Wrong string, can't convert to anything" << std::endl;;
 		exit(EXIT_FAILURE);
 	}
 	return 0;

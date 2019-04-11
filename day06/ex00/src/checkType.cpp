@@ -29,7 +29,7 @@ bool isFloat(std::string str)
 {
 	int i;
 
-	if (str.compare("-inff") || str.compare("+inff") || str.compare("nanf"))
+	if (!str.compare("-inff") || !str.compare("+inff") || !str.compare("nanf"))
 		return true;
 	i = 0;
 	if (str[i] == '+' || str[i] == '-')
@@ -59,7 +59,7 @@ bool isDouble(std::string str)
 {
 	int i;
 
-	if (str.compare("-inf") || str.compare("+inf") || str.compare("nan"))
+	if (!str.compare("-inf") || !str.compare("+inf") || !str.compare("nan"))
 		return true;
 	i = 0;
 	if (str[i] == '+' || str[i] == '-')
