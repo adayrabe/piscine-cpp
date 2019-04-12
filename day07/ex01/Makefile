@@ -1,5 +1,5 @@
 
-NAME := whatever
+NAME := iter
 
 SRC_DIR := ./src/
 INC_DIR := ./inc/
