@@ -1,71 +1,50 @@
 
 #include <iostream>
-#include "../inc/easyfind.hpp"
+#include "functions.hpp"
 
-
-
-int main() {
-
-	std::list<int> lst;
-	lst.push_back(2);
-	lst.push_back(3);
-	lst.push_back(6);
-	lst.push_back(5);
-
-	lst.push_back(12);
-	lst.push_back(-1);
-	lst.push_back(5);
-
- 	int t = 5;
-	std::cout << "Testing on list " << std::endl;
-	print_container(lst);
-
-	std::cout << "First occurence of " << t << " is on position: ";
-	std::cout << easyfind(lst, t) << std::endl;
-
-	t = -1;
-	std::cout << "First occurence of " << t << " is on position: ";
-	std::cout << easyfind(lst, t) << std::endl;
-	std::cout << "Testing invalid option: " << std::endl;
+#include <algorithm>
+int main(int ac, const char *av[])
+{
+	if (ac != 2)
+	{
+		std::cout << "Error - there has to be exactly 1 argument" << std::endl;
+		exit(EXIT_FAILURE);
+	}
 	try
 	{
-		std::cout << easyfind(lst, 10) << std::endl;
+		std::queue<Token *> res = makeTokens(av[1]);
+		std::cout << "Tokens: ";
+		print_queue(res);
+		res = makePolish(res);
+		std::cout << "Postfix: ";
+		print_queue(res);
+		int result = evaluatePolish(res);
+		std::cout << "Res: " << result << std::endl;
 	}
-	catch(std::exception &e)
+	catch (Token::WrongSymbolException &e)
 	{
-		std::cout << "The element is not in the list" << std::endl;
+		std::cout << e.what() << std::endl;
 	}
-
-	std::cout << "=========================================" << std::endl;
-	std::cout << "Testing on vector " << std::endl;
-
-	std::vector<int> vector;
-	vector.push_back(21);
-	vector.push_back(12);
-	vector.push_back(6);
-	vector.push_back(5);
-
-	vector.push_back(12);
-	vector.push_back(-1);
-	vector.push_back(500);
-
-	print_container(vector);
-	t = 12;
-	std::cout << "First occurence of " << t << " is on position: ";
-	std::cout << easyfind(vector, t) << std::endl;
-
-	t = 21;
-	std::cout << "First occurence of " << t << " is on position: ";
-	std::cout << easyfind(vector, t) << std::endl;
-	std::cout << "Testing invalid option: " << std::endl;
-
-	try
+	catch (Token::NoOpenBracketException &e)
 	{
-		std::cout << easyfind(vector, 10) << std::endl;
+		std::cout << e.what() << std::endl;
 	}
-	catch(std::exception &e)
+	catch (Token::NoClosingBracketException &e)
 	{
-		std::cout << "The element is not in the list" << std::endl;
+		std::cout << e.what() << std::endl;
 	}
+	catch (Token::OperatorsOverflowException &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	catch (Token::NumbersOverflowException &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	catch (Token::EmptyLineException &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+
 	return 0;
 }
