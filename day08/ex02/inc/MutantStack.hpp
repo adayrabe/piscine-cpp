@@ -9,18 +9,34 @@
 #include <iostream>
 #include <stack>
 
+//template <typename  T>
+//typedef typename std::stack<T>::container_type::iterator iterator;
+
 template <typename  T>
+
 class MutantStack : public std::stack<T>
 {
 	public:
+		typedef typename std::stack<T>::container_type::reverse_iterator iterator;
 		MutantStack<T>(){}
 
-		MutantStack<T>(MutantStack<T> const &other){*this = other;}
+		MutantStack<T>(MutantStack<T> const &other):std::stack<T>(other){;}
+		MutantStack<T>(std::stack<T> const &other):std::stack<T>(other){;}
 
-		MutantStack<T> &operator=(MutantStack<T> const &other){}
+		MutantStack<T> &operator=(MutantStack<T> const &other)
+		{
+			return std::stack<T>::operator=(other);
+		}
 
 		virtual ~MutantStack<T>(){}
-
+		iterator begin()
+		{
+			return std::stack<T>::c.rbegin();
+		}
+		iterator end()
+		{
+			return std::stack<T>::c.rend();
+		}
 };
 
 
