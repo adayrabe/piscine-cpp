@@ -119,6 +119,20 @@ class Token
 
 				virtual const char *what() const throw();
 		};
+
+		class ZeroDivisionException
+		{
+			public:
+				ZeroDivisionException();
+
+				ZeroDivisionException(ZeroDivisionException const &other);
+
+				ZeroDivisionException &operator=(ZeroDivisionException const &other);
+
+				virtual ~ZeroDivisionException() throw();
+
+				virtual const char *what() const throw();
+		};
 };
 
 

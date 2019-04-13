@@ -186,3 +186,25 @@ const char *Token::EmptyLineException::what() const throw()
 {
     return "Error - the line is empty";
 }
+
+Token::ZeroDivisionException::ZeroDivisionException(){}
+
+Token::ZeroDivisionException::ZeroDivisionException(ZeroDivisionException const &other)
+{
+    *this = other;
+}
+
+//TODO: add correct variable assignments
+
+Token::ZeroDivisionException & Token::ZeroDivisionException::operator= (ZeroDivisionException const &other)
+{
+	static_cast<void>(other);
+    return *this;
+}
+
+Token::ZeroDivisionException::~ZeroDivisionException()throw(){}
+
+const char *Token::ZeroDivisionException::what() const throw()
+{
+    return "Error - trying to divide by 0";
+}

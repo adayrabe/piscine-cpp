@@ -38,7 +38,11 @@ void doOperation(std::stack<Num *>&nums, Op *o)
 	if (op == '*')
 		nums.push(new Num (b * a));
 	if (op == '/')
-		nums.push(new Num (b / a));
+	{
+		if (a == 0)
+			throw Token::ZeroDivisionException();
+		nums.push(new Num(b / a));
+	}
 	printStack(nums);
 }
 

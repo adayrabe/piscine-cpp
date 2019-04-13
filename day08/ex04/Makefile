@@ -1,5 +1,5 @@
 
-NAME := easyfind
+NAME := ex04
 
 SRC_DIR := ./src/
 INC_DIR := ./inc/

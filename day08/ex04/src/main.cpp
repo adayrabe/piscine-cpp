@@ -3,16 +3,12 @@
 #include "functions.hpp"
 
 #include <algorithm>
-int main(int ac, const char *av[])
+
+void work(const char *str)
 {
-	if (ac != 2)
-	{
-		std::cout << "Error - there has to be exactly 1 argument" << std::endl;
-		exit(EXIT_FAILURE);
-	}
 	try
 	{
-		std::queue<Token *> res = makeTokens(av[1]);
+		std::queue<Token *> res = makeTokens(str);
 		std::cout << "Tokens: ";
 		print_queue(res);
 		res = makePolish(res);
@@ -45,6 +41,18 @@ int main(int ac, const char *av[])
 	{
 		std::cout << e.what() << std::endl;
 	}
-
+	catch (Token::ZeroDivisionException &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+}
+int main(int ac, const char *av[])
+{
+	if (ac != 2)
+	{
+		std::cout << "Error - there has to be exactly 1 argument" << std::endl;
+		exit(EXIT_FAILURE);
+	}
+	work(av[1]);
 	return 0;
 }
