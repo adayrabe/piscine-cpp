@@ -38,7 +38,7 @@ int Span::shortestSpan()
 	std::sort(_v.begin(), _v.end());
 	int res = _v[1] - _v[0];
 
-	for (std::vector<int>::const_iterator i = _v.begin() + 1; i != _v.end(); i++)
+	for (std::vector<int>::iterator i = _v.begin() + 1; i != _v.end(); i++)
 	{
 		int now = *i;
 		int prev = *(i - 1);

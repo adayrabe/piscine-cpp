@@ -15,7 +15,7 @@ int easyfind(T& container, int n)
 {
 	int res = 0;
 //	typename T::const_iterator i = std::find(container.begin(), container.end(), n);
-	for(typename T::const_iterator i = container.begin(); i != container.end(); i++)
+	for(typename T::iterator i = container.begin(); i != container.end(); i++)
 	{
 		if (*i == n)
 			return res;
@@ -29,7 +29,7 @@ int easyfind(T& container, int n)
 template <typename T>
 void print_container(T& container)
 {
-	for(typename T::const_iterator i = container.begin(); i != container.end(); i++)
+	for(typename T::iterator i = container.begin(); i != container.end(); i++)
 	{
 		std::cout << *i << " ";
 	}
