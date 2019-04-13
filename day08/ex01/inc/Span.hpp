@@ -29,7 +29,7 @@ class Span
 
 		int shortestSpan();
 		int longestSpan();
-		class VectorFullException
+		class VectorFullException : public std::exception
 		{
 			public:
 				VectorFullException();
@@ -43,7 +43,7 @@ class Span
 				virtual const char *what() const throw();
 		};
 
-		class NotEnoughElementsException
+		class NotEnoughElementsException : public std::exception
 		{
 			public:
 				NotEnoughElementsException();

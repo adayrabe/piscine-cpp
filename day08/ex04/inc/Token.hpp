@@ -36,7 +36,7 @@ class Token
 
 		bool isOp() const;
 
-		class WrongSymbolException
+		class WrongSymbolException : public std::exception
 		{
 			public:
 				WrongSymbolException();
@@ -50,7 +50,7 @@ class Token
 				virtual const char *what() const throw();
 		};
 
-		class NoClosingBracketException
+		class NoClosingBracketException : public std::exception
 		{
 			public:
 				NoClosingBracketException();
@@ -64,7 +64,7 @@ class Token
 				virtual const char *what() const throw();
 		};
 
-		class NoOpenBracketException
+		class NoOpenBracketException : public std::exception
 		{
 			public:
 				NoOpenBracketException();
@@ -78,7 +78,7 @@ class Token
 				virtual const char *what() const throw();
 		};
 
-		class OperatorsOverflowException
+		class OperatorsOverflowException : public std::exception
 		{
 			public:
 				OperatorsOverflowException();
@@ -92,7 +92,7 @@ class Token
 				virtual const char *what() const throw();
 		};
 
-		class NumbersOverflowException
+		class NumbersOverflowException : public std::exception
 		{
 			public:
 				NumbersOverflowException();
@@ -106,7 +106,7 @@ class Token
 				virtual const char *what() const throw();
 		};
 
-		class EmptyLineException
+		class EmptyLineException : public std::exception
 		{
 			public:
 				EmptyLineException();
@@ -120,7 +120,7 @@ class Token
 				virtual const char *what() const throw();
 		};
 
-		class ZeroDivisionException
+		class ZeroDivisionException : public std::exception
 		{
 			public:
 				ZeroDivisionException();
