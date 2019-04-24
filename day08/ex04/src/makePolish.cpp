@@ -18,7 +18,7 @@ void addOperator(Op* oper, 	std::stack<Token *> &operators, std::queue<Token *> 
 {
 	if (!operators.empty() && operators.top()->isOp())
 	{
-		while (!operators.empty() && preceede(dynamic_cast<Op*>(operators.top())->getOp(), oper->getOp()))
+		while (!operators.empty() && operators.top()->isOp() && preceede(dynamic_cast<Op*>(operators.top())->getOp(), oper->getOp()))
 		{
 			res.push(new Op(dynamic_cast<Op*>(operators.top())->getOp()));
 			operators.pop();

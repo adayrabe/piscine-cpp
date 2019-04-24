@@ -62,7 +62,7 @@ std::queue <Token*> makeTokens(std::string str)
 		else
 			throw Token::WrongSymbolException();
 	}
-	if (str.length() == 0)
-		throw Token::EmptyLineException();
+//	if (str.length() == 0)
+//		throw Token::EmptyLineException();
 	return res;
 }

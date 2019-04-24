@@ -66,6 +66,8 @@ int evaluatePolish(std::queue <Token *> tokens)
 			doOperation(nums, dynamic_cast<Op*>(tokens.front()));
 		tokens.pop();
 	}
+	if (nums.empty())
+		throw Token::EmptyLineException();
 	int res = nums.top()->getNum();
 	nums.pop();
 	if (!nums.empty())
